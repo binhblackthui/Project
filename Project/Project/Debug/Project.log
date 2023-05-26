@@ -1,0 +1,12 @@
+﻿  student.cpp
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(195,48): warning C4267: 'initializing': conversion from 'size_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(200,52): warning C4267: 'initializing': conversion from 'size_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(205,48): warning C4267: 'initializing': conversion from 'size_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(210,49): warning C4267: 'initializing': conversion from 'size_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(215,49): warning C4267: 'initializing': conversion from 'size_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(253,1): warning C4102: 'quaylai': unreferenced label
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(317,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(324,18): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(845,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Project\student.cpp(872,11): warning C4018: '<': signed/unsigned mismatch
+  Project.vcxproj -> C:\Users\LENOVO\OneDrive - VNU-HCMUS\Desktop\Project\Debug\Project.exe
