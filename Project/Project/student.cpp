@@ -1229,3 +1229,7 @@ void doiFileMonHoc(Khoahoc& k)
 	}
 	file.close();
 }
+void inRA()
+{
+	cout << "tran thanh binh " << endl;
+}
