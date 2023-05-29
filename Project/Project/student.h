@@ -47,7 +47,8 @@ struct Ngay
 
 struct Thoigian
 {
-	string gio;
+	string gioBatDau;
+	string gioKetThuc;
 	string thu;
 };
 
@@ -96,7 +97,13 @@ void ghifile(list s);
 void xoa1SV(list& s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
-void themSVVaoMonHoc(Hocphan* hp);
+int themSVVaoMonHoc(Hocphan*& hp);
+void ghiFileMonHoc(Khoahoc k);
 void taoMonHoc(Khoahoc& k);
 void xuatKhoaHoc(Khoahoc k);
-void doiFileMonHoc(Khoahoc& k);
+void docFileMonHoc(Khoahoc& k);
+void xuatMonHhoc(Hocphan* h);
+void inHoa(string& str);
+void suaMon(Hocphan*& temp);
+int suaMonHoc(Khoahoc& k);
+int themSVMonHoc(Khoahoc& k, list l);

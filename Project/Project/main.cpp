@@ -19,7 +19,7 @@ int main()
 	ganNULLGV(t);
 	taoDSGV(t);
 	docfileGV(t);
-	doiFileMonHoc(k);
+	docFileMonHoc(k);
 	do
 	{
 	quaylai:
@@ -154,6 +154,8 @@ int main()
 						cout << "8. tao hoc ki." << endl;
 						cout << "9. tao mon hoc." << endl;
 						cout << "10. xem danh sach mon hoc." << endl;
+						cout << "11. sua thong tin 1 mon hoc." << endl;
+						cout << "12. them sinh vien vao 1 mon hoc." << endl;
 						cout << "0. Dang xuat" << endl;
 						do {
 							cin >> x;
@@ -271,7 +273,12 @@ int main()
 							{
 								{
 									system("cls");
-									taoHocKi(k);
+									if (k.hocki == 0)
+									{
+										taoHocKi(k);
+										
+									}
+									cout << "hoc ki da duoc tao." << endl;
 									cout << endl;
 									cout << "0. quay lai" << endl;
 									do {
@@ -303,6 +310,29 @@ int main()
 									} while (x != 0);
 									break;
 								}
+							}
+							case 11:
+							{
+								system("cls");
+								if (suaMonHoc(k))
+									goto quaylai5;
+								cout << endl;
+								cout << "0. quay lai" << endl;
+								do {
+									cin >> x;
+								} while (x != 0);
+								break;
+							}
+							case 12:
+							{
+								system("cls");
+								themSVMonHoc(k, s);
+								cout << endl;
+								cout << "0. quay lai" << endl;
+								do {
+									cin >> x;
+								} while (x != 0);
+								break;
 							}
 							}
 							if (x == 0)
