@@ -156,9 +156,16 @@ int main()
 						cout << "10. xem danh sach mon hoc." << endl;
 						cout << "11. sua thong tin 1 mon hoc." << endl;
 						cout << "12. them sinh vien vao 1 mon hoc." << endl;
+						cout << "13. xoa sinh vien ra khoi 1 mon hoc" << endl;
+						cout << "14. them danh sach sinh vien vao mon bang file CSV." << endl;
+						cout << "15. xoa mot khoa hoc." << endl;
 						cout << "0. Dang xuat" << endl;
 						do {
 							cin >> x;
+							if (x == 0)
+							{
+								goto quaylai3;
+							}
 							switch (x)
 							{
 							case 1:
@@ -290,7 +297,10 @@ int main()
 							case 9:
 							{
 								system("cls");
-								taoMonHoc(k);
+								if (k.hocki != 0)
+									taoMonHoc(k);
+								else
+									cout << "vui long tao hoc ki" << endl;
 								cout << endl;
 								cout << "0. quay lai" << endl;
 								do {
@@ -327,6 +337,39 @@ int main()
 							{
 								system("cls");
 								themSVMonHoc(k, s);
+								cout << endl;
+								cout << "0. quay lai" << endl;
+								do {
+									cin >> x;
+								} while (x != 0);
+								break;
+							}
+							case 13:
+							{
+								system("cls");
+								xoa1SVRaKhoiMonHoc(k);
+								cout << endl;
+								cout << "0. quay lai" << endl;
+								do {
+									cin >> x;
+								} while (x != 0);
+								break;
+							}
+							case 14:
+							{
+								system("cls");
+								themSVVaoMonHoc(k);
+								cout << endl;
+								cout << "0. quay lai" << endl;
+								do {
+									cin >> x;
+								} while (x != 0);
+								break;
+							}
+							case 15:
+							{
+								system("cls");
+								xoaKhoaHoc(k);
 								cout << endl;
 								cout << "0. quay lai" << endl;
 								do {

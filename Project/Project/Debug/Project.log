@@ -9,6 +9,7 @@ C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(317,20)
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(324,18): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(843,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(869,11): warning C4018: '<': signed/unsigned mismatch
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(934,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(935,20): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(936,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(937,20): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1480,21): warning C4390: ';': empty controlled statement found; is this the intent?
   Project.vcxproj -> C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Debug\Project.exe
