@@ -29,11 +29,20 @@ struct student
 	infostudent info;
 	student* pNext;
 };
-struct classroom {
-	char tenlop[20];
-	char nganh[30];
-	int n = 0;
+struct Lop
+{
+	string tenLop;
+	string khoa;
+	int soluong;
+	int top;
 	int nam;
+	infostudent* danhsach=NULL;
+	Lop* next;
+};
+
+struct listLop {
+	Lop* head = NULL;
+	string namhoc;
 };
 struct list
 {
@@ -52,16 +61,30 @@ struct Thoigian
 	string thu;
 };
 
+
+
+struct Diem {
+	float giuaki = 0;
+	float cuoiki = 0;
+	float diemtb = 0;
+};
+
+struct thongtin {
+	infostudent info{};
+	Diem diem{};
+};
+
 struct Hocphan
 {
 	string MaHP;
 	string TenHP;
 	string Tenlop;
 	string GV;
-	int tinchi;
+	int tinchi=0;
 	Thoigian time;
-	int soluong;
-	infostudent* danhsach;
+	int soluong=0;
+	thongtin* danhsach=NULL;
+
 	Hocphan* next;
 	int top = 0;
 };
@@ -69,8 +92,8 @@ struct Khoahoc
 {
 	
 	int hocki = 0;;
-	Ngay batdau;
-	Ngay ketthuc;
+	Ngay batdau = {};
+	Ngay ketthuc = {};
 	Hocphan* HP=NULL;
 	
 };
@@ -82,25 +105,16 @@ student* creatstudent();
 void GanNULLSV(list& l);
 void themDauDSSV(list& l);
 void vietHoaTen(char s[]);
-void dangkiSV(list& l,classroom *lop);
 void xuatthongtinSV(student* s);
 student* dangnhapSV(list& l);
 student* doiMatKhau(student*& temp, list l);
-void dslop(list s, classroom* &lop, int& n);
-void xuatlop(classroom* lop, int n,list s);
-int taonamhoc(int& namhoc);
-void taolop(list s, classroom* &lop, int namhoc);
-void nhaptay(list s, classroom* lop);
-void nhapfile(list s, classroom* lop);
-void them1SV(list& s);
 void ghifile(list s);
-void xoa1SV(list& s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
 int themSVVaoMonHoc(Khoahoc k);
 void ghiFileMonHoc(Khoahoc k);
 void taoMonHoc(Khoahoc& k);
-void xuatKhoaHoc(Khoahoc k);
+int xuatKhoaHoc(Khoahoc k);
 void docFileMonHoc(Khoahoc& k);
 void xuatMonHhoc(Hocphan* h);
 void inHoa(string& str);
@@ -109,3 +123,15 @@ int suaMonHoc(Khoahoc k);
 int themSVMonHoc(Khoahoc& k, list l);
 int xoa1SVRaKhoiMonHoc(Khoahoc k);
 void xoaKhoaHoc(Khoahoc& k);
+void xuatDSDiem(Hocphan* temp);
+void svxemDiem(Khoahoc k, student* sv);
+void svxemThongTinLop(Khoahoc k, student* sv);
+Lop* taoLop();
+void docFileLop(listLop& l);
+void ghiDSLop(listLop l);
+void taoNamHoc(listLop& l);
+void taoLopHoc(listLop& l);
+void xuatDSLop(listLop l);
+void xuatLop(listLop l);
+void themVaoLopFile(listLop& l, list& s);
+void them1SVLop(listLop& l, list& s);

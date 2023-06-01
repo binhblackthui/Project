@@ -6,11 +6,11 @@ int main()
 {
 	Khoahoc k;
 	list s;
-	int namhoc=0;
+	int namhoc = 0;
 	listteacher t;
 	student* temp;
 	teacher* temp1;
-	classroom* lop=NULL;
+	listLop lop;
 	GanNULLSV(s);
 	demsoluongsv(s);
 	docfileSV(s);
@@ -20,9 +20,10 @@ int main()
 	taoDSGV(t);
 	docfileGV(t);
 	docFileMonHoc(k);
+	docFileLop(lop);
 	do
 	{
-	quaylai:
+	menu:
 		system("cls");
 		cout << "1. sinh vien." << endl;;
 		cout << "2. giao vien" << endl;
@@ -33,7 +34,7 @@ int main()
 		case 1:
 		{
 			do {
-			quaylai0:
+			dangnhapsv:
 				system("cls");
 				cout << "1. dang nhap." << endl;
 				cout << "0. quay lai" << endl;
@@ -42,8 +43,8 @@ int main()
 				{
 				case 1:
 				{
+				dangnhaplaiSV:
 					system("cls");
-				quaylai1:
 					cin.ignore();
 					temp = dangnhapSV(s);
 					if (temp == NULL)
@@ -55,23 +56,29 @@ int main()
 							cin >> x;
 						} while (x != 1 and x != 2);
 						if (x == 1)
-							goto quaylai1;
+							goto dangnhaplaiSV;
 						else
-							goto quaylai0;
+							goto dangnhapsv;
 					}
 					else
 					{
 						do
 						{
-						quaylai2:
+						menusv:
 							system("cls");
 							cout << "1. Xem thong tin ca nhan." << endl;
 							cout << "2. doi mat khau." << endl;
+							cout << "3. danh sach mon hoc duoc dang ki." << endl;
+							cout << "4. diem cac mon hoc." << endl;
 							cout << "0. dang xuat" << endl;
 							do
 							{
 								cin >> x;
-							} while (x < 0 || x>2);
+							} while (x < 0 || x>4);
+							if (x == 0)
+							{
+								goto dangnhapsv;
+							}
 							switch (x)
 							{
 							case 1:
@@ -84,7 +91,7 @@ int main()
 								{
 									cin >> x;
 								} while (x != 0);
-								goto quaylai2;
+								goto menusv;
 								break;
 							}
 							case 2:
@@ -98,25 +105,56 @@ int main()
 								{
 									cin >> x;
 								} while (x != 0);
-								goto quaylai2;
+								goto menusv;
+								break;
+							}
+							case 3:
+							{
+								system("cls");
+								svxemThongTinLop(k, temp);
+								cout << endl;
+								cout << "0.quay lai." << endl;
+
+								do
+								{
+									cin >> x;
+								} while (x != 0);
+								goto menusv;
+								break;
+							}
+							case 4:
+							{
+								system("cls");
+								svxemDiem(k, temp);
+								cout << endl;
+								cout << "0.quay lai." << endl;
+
+								do
+								{
+									cin >> x;
+								} while (x != 0);
+								goto menusv;
 								break;
 							}
 							}
 							if (x == 0)
-								goto quaylai0;
+								goto dangnhapsv;
 						} while (x != 0);
 					}
 					break;
 				}
+				case 0:
+				{
+					goto menu;
 				}
-				if (x == 0)
-					goto quaylai;
-			} while (x != 0);
+				}
+			} while (1);
+		}
 		case 2:
 		{
-			
+
 			do {
-			quaylai3:
+			dangnhapGV:
 				system("cls");
 				cout << "1. dang nhap." << endl;
 				cout << "0. quay lai" << endl;
@@ -124,7 +162,7 @@ int main()
 				if (x == 1)
 				{
 					system("cls");
-				quaylai4:
+				dangnhaplaiGV:
 					cin.ignore();
 					temp1 = dangnhapGV(t);
 					if (temp1 == NULL)
@@ -136,38 +174,27 @@ int main()
 							cin >> x;
 						} while (x != 1 and x != 2);
 						if (x == 1)
-							goto quaylai4;
+							goto dangnhaplaiGV;
 						else
-							goto quaylai3;
+							goto dangnhapGV;
 					}
-					else
-					{
-					quaylai5:
-						system("cls");
-						cout << "1. Xem thong tin ca nhan." << endl;
-						cout << "2. Doi mat khau." << endl;
-						cout << "3. Xem danh sach lop" << endl;
-						cout << "4. tao nam hoc moi." << endl;
-						cout << "5. tao lop hoc." << endl;
-						cout << "6. them mot sinh vien vao 1 lop." << endl;
-						cout << "7. xoa 1 sinh vien." << endl;
-						cout << "8. tao hoc ki." << endl;
-						cout << "9. tao mon hoc." << endl;
-						cout << "10. xem danh sach mon hoc." << endl;
-						cout << "11. sua thong tin 1 mon hoc." << endl;
-						cout << "12. them sinh vien vao 1 mon hoc." << endl;
-						cout << "13. xoa sinh vien ra khoi 1 mon hoc" << endl;
-						cout << "14. them danh sach sinh vien vao mon bang file CSV." << endl;
-						cout << "15. xoa mot khoa hoc." << endl;
-						cout << "0. Dang xuat" << endl;
+					else {
 						do {
+							menuGV:
+							system("cls");
+							cout << "1. xem thong tin ca nhan." << endl;
+							cout << "2. doi mat khau" << endl;
+							cout << "3. quan ly danh sach cac lop." << endl;
+							cout << "4. quan ly danh sach mon hoc." << endl;
+							cout << "0. dang xuat" << endl;
 							cin >> x;
-							if (x == 0)
-							{
-								goto quaylai3;
-							}
 							switch (x)
 							{
+							case 0:
+							{
+								goto dangnhapGV;
+								break;
+							}
 							case 1:
 							{
 								system("cls");
@@ -191,206 +218,229 @@ int main()
 							}
 							case 3:
 							{
-								system("cls");
-								n = 0;
-								dslop(s, lop, n);
-								xuatlop(lop, n,s);
-								delete[] lop;
-								n = 0;
-								cout << endl;
-								cout << "0. quay lai." << endl;
 								do {
+								lophoc:
+									system("cls");
+									cout << "1. tao nam hoc moi." << endl;
+									cout << "2. tao lop moi." << endl;
+									cout << "3. them sinh vien vao lop bang file CSV." << endl;
+									cout << "4. them 1 sinh vien vao lop." << endl;
+									cout << "5. xem danh sach cac lop" << endl;
+									cout << "0. quay lai" << endl;
 									cin >> x;
-								} while (x != 0);
-								break;
+									switch (x)
+									{
+									case 0:
+									{
+										goto menuGV;
+									}
+									case 1:
+									{
+										system("cls");
+										taoNamHoc(lop);
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 2:
+									{
+										system("cls");
+										
+										taoLopHoc(lop);
+									
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 3:
+									{
+										system("cls");
+										xuatDSLop(lop);
+
+										themVaoLopFile(lop, s);
+
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 4:
+									{
+										{
+											system("cls");
+
+											them1SVLop(lop, s);
+
+											cout << endl;
+											cout << "0. quay lai" << endl;
+											do {
+												cin >> x;
+											} while (x != 0);
+											break;
+										}
+									}
+									case 5:
+									{
+										{
+											system("cls");
+											xuatDSLop(lop);
+											cout << endl;
+											xuatLop(lop);
+
+											cout << endl;
+											cout << "0. quay lai" << endl;
+											do {
+												cin >> x;
+											} while (x != 0);
+											break;
+										}
+									}
+									}
+								} while (1);
 							}
 							case 4:
 							{
-								system("cls");
-								taonamhoc(namhoc);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 5:
-							{
-								lop = NULL;
-								system("cls");
-								if (namhoc == 0) {
-									cout << "vui long toa nam hoc truoc." << endl;
-									cout << endl;
-									cout << "0. quay lai" << endl;
-									do {
-										cin >> x;
-									} while (x != 0);
-									break;
-								}
-								taolop(s, lop, namhoc);
-								if (lop == NULL)
-								{
-									cout << endl;
-									cout << "0. quay lai" << endl;
-									do {
-										cin >> x;
-									} while (x != 0);
-									break;
-								}
-								cout << "chon cach nhap danh sach sinh vien" << endl;
-								cout << "1. nhap tay" << endl;
-								cout << "2. nhap vao bang file." << endl;
-								cin >> x;
-								if (x == 1)
-									nhaptay(s, lop);
-								if (x == 2)
-									nhapfile(s, lop);
-								delete lop;
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 6:
-							{
-								system("cls");
-								them1SV(s);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 7:
-							{
-								system("cls");
-								xoa1SV(s);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 8:
-							{
+								do
 								{
 									system("cls");
-									if (k.hocki == 0)
+									cout << "1. tao hoc ki." << endl;
+									cout << "2. tao mon hoc." << endl;
+									cout << "3. xem danh sach mon hoc." << endl;
+									cout << "4. sua thong tin mon hoc." << endl;
+									cout << "5. them 1 sinh vien vao mon hoc." << endl;
+									cout << "6. them danh sach sinh vien vao mon hoc bang file CSV." << endl;
+									cout << "7. xoa 1 sinh vien ra khoi mon hoc." << endl;
+									cout << "8. xoa 1 mon hoc." << endl;
+									cout << "0. quay lai" << endl;
+									cin >> x;
+									switch (x)
 									{
-										taoHocKi(k);
-										
+									case 0:
+										goto menuGV;
+									case 1:
+									{
+										system("cls");
+										if (k.hocki == 0)
+										{
+											taoHocKi(k);
+
+										}
+										cout << "hoc ki da duoc tao." << endl;
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
 									}
-									cout << "hoc ki da duoc tao." << endl;
-									cout << endl;
-									cout << "0. quay lai" << endl;
-									do {
-										cin >> x;
-									} while (x != 0);
-									break;
-								}
-							}
-							case 9:
-							{
-								system("cls");
-								if (k.hocki != 0)
-									taoMonHoc(k);
-								else
-									cout << "vui long tao hoc ki" << endl;
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 10:
-							{
-								{
-									system("cls");
-									xuatKhoaHoc(k);
-									cout << endl;
-									cout << "0. quay lai" << endl;
-									do {
-										cin >> x;
-									} while (x != 0);
-									break;
-								}
-							}
-							case 11:
-							{
-								system("cls");
-								if (suaMonHoc(k))
-									goto quaylai5;
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 12:
-							{
-								system("cls");
-								themSVMonHoc(k, s);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 13:
-							{
-								system("cls");
-								xoa1SVRaKhoiMonHoc(k);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 14:
-							{
-								system("cls");
-								themSVVaoMonHoc(k);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
-							}
-							case 15:
-							{
-								system("cls");
-								xoaKhoaHoc(k);
-								cout << endl;
-								cout << "0. quay lai" << endl;
-								do {
-									cin >> x;
-								} while (x != 0);
-								break;
+									case 2:
+									{
+										system("cls");
+										if (k.hocki != 0)
+											taoMonHoc(k);
+										else
+											cout << "vui long tao hoc ki" << endl;
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 3:
+									{
+										system("cls");
+										if (xuatKhoaHoc(k)) goto menuGV;
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 4:
+									{
+										system("cls");
+										if (suaMonHoc(k))
+											goto menuGV;
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 5:
+									{
+										system("cls");
+										themSVMonHoc(k, s);
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 6:
+									{
+										system("cls");
+										themSVVaoMonHoc(k);
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 7:
+									{
+										system("cls");
+										xoa1SVRaKhoiMonHoc(k);
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									case 8:
+									{
+										system("cls");
+										xoaKhoaHoc(k);
+										cout << endl;
+										cout << "0. quay lai" << endl;
+										do {
+											cin >> x;
+										} while (x != 0);
+										break;
+									}
+									}
+								} while (1);
 							}
 							}
 							if (x == 0)
 							{
-								goto quaylai5;
+								goto menuGV;
 							}
-						} while (x<0||x>5);
-						if (x == 0)
-							goto quaylai;
-					}while (1);
+						
+						} while (1);
+					}
+
 				}
-			} while (x!=0);
+			} while (1);
+
+
 		}
+
 		}
-		
-		}
-	} while (x != 0);
+		} while (x != 0);
+
 }
