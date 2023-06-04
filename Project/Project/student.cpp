@@ -128,19 +128,6 @@ void docfileSV(list& l)
 		{
 			temp2[j] = temp1[k];
 			k++;
-			if (temp1[k] == ',')
-			{
-				k++;
-				temp2[j + 1] = '\0';
-				s->info.chucvu = new char[strlen(temp2) + 1];
-				strcpy(s->info.chucvu, temp2);
-				break;
-			}
-		}
-		for (int j = 0; 1; j++)
-		{
-			temp2[j] = temp1[k];
-			k++;
 			if (temp1[k] == '\0')
 			{
 				k++;
@@ -193,13 +180,13 @@ void xuatthongtinSV(student* s)
 	cout << "Lop : " << s->info.lop << endl;
 	cout << "Gioi tinh : " << s->info.gtinh << endl;
 	cout << "Ngay sinh : " << s->info.ngsinh << endl;
-	cout << "Chuc vu : " << s->info.chucvu << endl;
+	cout << "Chuc vu : Hoc sinh"  << endl;
 	cout << "Can cuoc cong dan : " << s->info.CCCD << endl;
 }
 
 
 
-student* creatstudent()
+student* taoSV()
 {
 	student* s = new student;
 	s->pNext = NULL;
@@ -218,30 +205,17 @@ void GanNULLSV(list& l)
 void themDauDSSV(list& l)
 {
 
-	student* s = creatstudent();
+	student* s = taoSV();
 	s->pNext = l.pHead;
 	l.pHead = s;
 }
 
 
 
-void vietHoaTen(char s[])
-{
-	s[0] = toupper(s[0]);
-	for (int i = 1; i < strlen(s); i++)
-	{
-		if (s[i - 1] == ' ')
-		{
-			s[i] = toupper(s[i]);
-			continue;
-		}
-		s[i] = towlower(s[i]);
-	}
-}
 
 
 
-student* doiMatKhau(student*& temp, list l)
+student* doiMKSV(student*& temp, list l)
 {
 	student* acc = l.pHead;
 	char pass[100];
@@ -310,21 +284,24 @@ void docFileLop(listLop& l)
 	while (!file.eof())
 	{
 		getline(file, str);
-		if(!file.eof())
-		n++;
+		if (!file.eof())
+			n++;
 	}
+
 	file.close();
 	file.open("danh sach lop.csv", ios::in);
 	getline(file, str);
 	l.namhoc = str.substr(0, str.find(","));
 	n--;
+
 	for (int i = 0; i < n; i++)
 	{
 		Lop* temp = taoLop();
 		getline(file, str);
+	
 		temp->tenLop = str.substr(0, str.find(","));
 		str = str.substr(str.find(",") + 1, str.length());
-
+	
 		temp->khoa = str.substr(0, str.find(","));
 		str = str.substr(str.find(",") + 1, str.length());
 
@@ -335,7 +312,6 @@ void docFileLop(listLop& l)
 		str = str.substr(str.find(",") + 1, str.length());
 
 		temp->nam = stoi(str);
-
 		temp->danhsach = new infostudent[temp->soluong];
 
 		str = temp->tenLop + ".csv";
@@ -347,8 +323,7 @@ void docFileLop(listLop& l)
 		for (int j = 0; j < temp->top; j++)
 		{
 			getline(f, str);
-			ch = str.substr(0, str.find(","));
-			temp->danhsach[j].MSSV = stoi(ch);
+			temp->danhsach[j].MSSV = stoi(str);
 			str = str.substr(str.find(",") + 1, str.length());
 
 			ch = str.substr(0, str.find(","));
@@ -390,7 +365,7 @@ void ghiDSLop(listLop l)
 	f << l.namhoc << ",\n";
 	while (temp != NULL)
 	{
-		f << temp->tenLop << "," << temp->khoa << "," << temp->tenLop << "," << temp->soluong << "," << temp->nam << "\n";
+		f << temp->tenLop << "," << temp->khoa << "," <<temp->top<<"," << temp->soluong << "," << temp->nam << "\n";
 		string str = temp->tenLop + ".csv";
 		ofstream file(str, ios::out);
 		for (int i = 0; i < temp->top; i++)
@@ -492,10 +467,11 @@ void xuatLop(listLop l)
 	}
 }
 
-void themVaoLopFile(listLop& l,list&s)
+void themVaoLopFile(listLop& lop, list& l)
 {
-	Lop* temp = l.head;
+	Lop* temp = lop.head;
 	cin.ignore();
+	cout << endl;
 	cout << "nhap ten lop can them : ";
 	string str;
 	getline(cin, str);
@@ -525,87 +501,104 @@ void themVaoLopFile(listLop& l,list&s)
 	}
 
 	int n = 0;
+	cout << endl;
+	cout << endl;
 	cout << "nhap ten file CSV vao (vd: 22CTT2.csv : ";
 	getline(cin, str);
 	ifstream f(str, ios::in);
+	string ch;
 	if (f.fail())
 	{
 		cout << "mo file that bai" << endl;
 		cout << endl;
+		return;
 	}
-	while (getline(f, str))
+	while (getline(f, ch))
 		n++;
 	f.close();
-	if (n > temp->soluong)
+	if (n + temp->top > temp->soluong)
 	{
 		cout << "them sinh vien vao lop that bai" << endl;
 		return;
 	}
-	string ch;
 	f.open(str, ios::in);
-	temp->top = n;
-	for (int i = 0; i < temp->top; i++)
+	
+	list s;
+	s.pHead = NULL;
+	for (int i = 0; i < n; i++)
+		themDauDSSV(s);
+	student* sv=s.pHead;
+	for (int i = temp->top; i < temp->top+n; i++)
 	{
-		getline(cin, str);
-		ch = str.substr(0, str.find(","));
-		temp->danhsach[i].MSSV = stoi(ch);
+		getline(f, str);
+		temp->danhsach[i].MSSV = stoi(str);
+		sv->info.MSSV = stoi(str);
 		str = str.substr(str.find(",") + 1, str.length());
-
+		
+		
 		ch = str.substr(0, str.find(","));
 		temp->danhsach[i].tensv = new char[ch.length() + 1];
 		strcpy(temp->danhsach[i].tensv, ch.c_str());
+		sv->info.tensv = new char[ch.length() + 1];
+		strcpy(sv->info.tensv, ch.c_str());
 		str = str.substr(str.find(",") + 1, str.length());
 
 		ch = str.substr(0, str.find(","));
 		temp->danhsach[i].lop = new char[ch.length() + 1];
 		strcpy(temp->danhsach[i].lop, ch.c_str());
+		sv->info.lop = new char[ch.length() + 1];
+		strcpy(sv->info.lop, ch.c_str());
 		str = str.substr(str.find(",") + 1, str.length());
 
 		ch = str.substr(0, str.find(","));
 		temp->danhsach[i].gtinh = new char[ch.length() + 1];
 		strcpy(temp->danhsach[i].gtinh, ch.c_str());
+		sv->info.gtinh = new char[ch.length() + 1];
+		strcpy(sv->info.gtinh, ch.c_str());
 		str = str.substr(str.find(",") + 1, str.length());
 
 		ch = str.substr(0, str.find(","));
 
 		temp->danhsach[i].ngsinh = new char[ch.length() + 1];
 		strcpy(temp->danhsach[i].ngsinh, ch.c_str());
+		sv->info.ngsinh = new char[ch.length() + 1];
+		strcpy(sv->info.ngsinh, ch.c_str());
 		str = str.substr(str.find(",") + 1, str.length());
 
 		temp->danhsach[i].CCCD = stoi(str);
 
-		student* svnew = creatstudent();
-		svnew->info = temp->danhsach[i];
+		sv->info.CCCD = stoi(str);
 
-		ch = to_string(temp->danhsach[i].MSSV);
-		svnew->acc.tenTK = new char[ch.length() + 1];
-		strcpy(svnew->acc.tenTK, ch.c_str());
+		ch = to_string(sv->info.MSSV);
+		sv->acc.tenTK = new char[ch.length() + 1];
+		strcpy(sv->acc.tenTK, ch.c_str());
+	    sv->acc.password = new char[4];
+		strcpy(sv->acc.password, "123");
+
+
+		sv = sv->pNext;
 		
-		svnew->acc.tenTK = new char[ 4];
-		strcpy(svnew->acc.tenTK, "123");
-		if (s.pHead->info.MSSV > svnew->info.MSSV)
+
+	}
+	temp->top += n;
+	/*sv = s.pHead;
+	while (sv != NULL)
+	{
+		cout << sv->acc.tenTK;
+		sv = sv->pNext;
+	}
+	cin >> str;*/
+	sv = l.pHead;
+	
+	
+	while (sv != NULL)
+	{
+		if (sv->pNext == NULL)
 		{
-			svnew->pNext = s.pHead;
-			s.pHead = svnew;
+			sv->pNext = s.pHead;
+			break;
 		}
-		else {
-			student* sv = s.pHead;
-			while (sv != NULL)
-			{
-				if (sv->pNext == NULL)
-				{
-					sv->pNext = svnew;
-					break;
-				}
-				if (sv->info.MSSV<svnew->info.MSSV and sv->pNext->info.MSSV>svnew->info.MSSV)
-				{
-					svnew->pNext = sv->pNext;
-					sv->pNext = svnew;
-					break;
-				}
-			}
-		}
-		ghifile(s);
+		sv = sv->pNext;
 	}
 	system("cls");
 	cout << "Lop : " << temp->tenLop << endl;
@@ -619,7 +612,8 @@ void themVaoLopFile(listLop& l,list&s)
 	{
 		cout << setw(10) << left << i + 1 << setw(15) << left << temp->danhsach[i].MSSV << setw(30) << left << temp->danhsach[i].tensv << setw(20) << left << temp->danhsach[i].gtinh << setw(20) << left << temp->danhsach[i].ngsinh << setw(10) << left << temp->danhsach[i].CCCD << endl;
 	}
-	ghiDSLop(l);
+	ghifile(l);
+	ghiDSLop(lop);
 	f.close();
 }
 
@@ -649,33 +643,47 @@ void them1SVLop(listLop& l, list& s)
 		cout << "lop da day" << endl;
 		return;
 	}
-	student* svnew = creatstudent();
+	student* svnew = taoSV();
+
 	cout << "nhap thong tin sinh vien can them vao : " << endl;
 	cout << "Ma so sinh vien : ";
 	getline(cin, str);
+
 	svnew->acc.tenTK = new char[str.length()+1];
 	strcpy(svnew->acc.tenTK, str.c_str());
+
 	svnew->info.MSSV = stoi(str);
+
 	svnew->acc.password = new char[4];
 	strcpy(svnew->acc.password, "123");
+
 	cout << "ho va ten : ";
 	getline(cin, str);
 	svnew->info.tensv = new char[str.length() + 1];
 	strcpy(svnew->info.tensv, str.c_str());
-	cout << "lop : ";
-	getline(cin, str);
-	svnew->info.lop = new char[str.length() + 1];
-	strcpy(svnew->info.lop, str.c_str());
+
+
+
+	svnew->info.lop = new char[temp->tenLop.length() + 1];
+	strcpy(svnew->info.lop, temp->tenLop.c_str());
+
+
 	cout << "gioi tinh : ";
 	getline(cin, str);
 	svnew->info.gtinh = new char[str.length() + 1];
 	strcpy(svnew->info.gtinh, str.c_str());
+
+
 	cout << "ngay sinh (vd: 1/1/2004) : ";
 	getline(cin, str);
 	svnew->info.ngsinh = new char[str.length() + 1];
 	strcpy(svnew->info.ngsinh, str.c_str());
+
+
 	cout << "Can cuoc cong dan : ";
 	cin >> svnew->info.CCCD;
+
+
 	if (s.pHead->info.MSSV > svnew->info.MSSV)
 	{
 		svnew->pNext = s.pHead;
@@ -718,11 +726,11 @@ void ghifile(list s)
 	ofstream file2;
 	file1.open("infostudent.csv", ios::out);
 	file2.open("accstudent.csv", ios::out);
-	file1 << "MSSV,ho va ten,lop,gioi tinh,ngay sinh,chuc vu,CCCD,\n";
+	file1 << "MSSV,ho va ten,lop,gioi tinh,ngay sinh,CCCD,\n";
 	file2 << "ten tai khoan,mat khau,\n";
 	while (sv != NULL)
 	{
-		file1 << sv->info.MSSV << ","; file1 << sv->info.tensv << ",", file1 << sv->info.lop << ","; file1 << sv->info.gtinh << ","; file1 << sv->info.ngsinh << ","; file1 << sv->info.chucvu << ","; file1 << sv->info.CCCD << ",\n";
+		file1 << sv->info.MSSV << ","; file1 << sv->info.tensv << ",", file1 << sv->info.lop << ","; file1 << sv->info.gtinh << ","; file1 << sv->info.ngsinh << ","; file1 << sv->info.CCCD << ",\n";
 		file2 << sv->acc.tenTK << "," << sv->acc.password << "\n";
 		sv = sv->pNext;
 	}
@@ -949,6 +957,8 @@ int themSVVaoMonHoc(Khoahoc k)
 		str = str.substr(str.find(",") + 1, str.length());
 
 		hp->danhsach[i].info.CCCD = stoi(str);
+
+		hp->danhsach[i].diem = {};
 	}
 	hp->top += n;
 	ghiFileMonHoc(k);

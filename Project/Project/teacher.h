@@ -30,13 +30,8 @@ struct listteacher
 {
 	teacher* Head;
 };
-//struct classroom
-//{
-//	char* nameclass;
-//	infostudent sv[100];
-//	int n;
-//
-//};
+
+
 void themDauDSGV(listteacher& l);
 teacher* dangnhapGV(listteacher& l);
 void docfileGV(listteacher& l);

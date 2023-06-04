@@ -97,7 +97,7 @@ int main()
 							case 2:
 							{
 								system("cls");
-								temp = doiMatKhau(temp, s);
+								temp = doiMKSV(temp, s);
 								cout << endl;
 								cout << "0.quay lai." << endl;
 
@@ -159,6 +159,8 @@ int main()
 				cout << "1. dang nhap." << endl;
 				cout << "0. quay lai" << endl;
 				cin >> x;
+				if (x == 0)
+					goto menu;
 				if (x == 1)
 				{
 					system("cls");
@@ -310,6 +312,7 @@ int main()
 							{
 								do
 								{
+									monhoc:
 									system("cls");
 									cout << "1. tao hoc ki." << endl;
 									cout << "2. tao mon hoc." << endl;
@@ -331,9 +334,27 @@ int main()
 										if (k.hocki == 0)
 										{
 											taoHocKi(k);
-
+											cout << "hoc ki da duoc tao." << endl;
 										}
-										cout << "hoc ki da duoc tao." << endl;
+										else {
+											cout << "Hoc ki : " << k.hocki << endl;
+											cout << "Ngay bat dau : " << k.batdau.ngay << "/" << k.batdau.thang << "/" << k.batdau.nam << endl;
+											cout << "Ngay ket thuc : " << k.ketthuc.ngay << "/" << k.ketthuc.thang << "/" << k.ketthuc.nam << endl;
+											cout << endl;
+											cout << "ban co muon tao hoc ki moi khong ?" << endl;
+											cout << "1. co \t 2. khong" << endl;
+											cout << endl;
+											do {
+												cin >> x;
+											} while (x != 1 and x != 2);
+											if (x == 1)
+											{
+												system("cls");
+												taoHocKi(k);
+												cout << "hoc ki da duoc tao." << endl;
+											}
+										}
+										
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										do {
@@ -358,7 +379,7 @@ int main()
 									case 3:
 									{
 										system("cls");
-										if (xuatKhoaHoc(k)) goto menuGV;
+										if (xuatKhoaHoc(k)) goto monhoc;
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										do {
@@ -370,7 +391,7 @@ int main()
 									{
 										system("cls");
 										if (suaMonHoc(k))
-											goto menuGV;
+											goto monhoc;
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										do {

@@ -16,7 +16,6 @@ struct infostudent
 	char* lop;
 	char* ngsinh;
 	long long CCCD;
-	char* chucvu;
 };
 struct account
 {
@@ -101,13 +100,12 @@ struct Khoahoc
 
 void docfileSV(list& l);//dua danh sach sinh da duoc dang ki ra mang
 void demsoluongsv(list& l);//dem so luong sinh vien da đănn kí
-student* creatstudent();
+student* taoSV();
 void GanNULLSV(list& l);
 void themDauDSSV(list& l);
-void vietHoaTen(char s[]);
 void xuatthongtinSV(student* s);
 student* dangnhapSV(list& l);
-student* doiMatKhau(student*& temp, list l);
+student* doiMKSV(student*& temp, list l);
 void ghifile(list s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
