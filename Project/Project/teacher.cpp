@@ -48,8 +48,8 @@ void docfileGV(listteacher& l)
 	teacher* t = l.Head;
 	ifstream file1;
 	ifstream file2;
-	file1.open("accteacher.csv", ios::app);
-	file2.open("infoteacher.csv", ios::app);
+	file1.open("accteacher.csv", ios::in);
+	file2.open("infoteacher.csv", ios::in);
 	file1.getline(temp1, 1000);
 	file2.getline(temp1, 1000);
 	while (t!=NULL)
@@ -73,7 +73,7 @@ void docfileGV(listteacher& l)
 		{
 			temp2[j] = temp1[k];
 			k++;
-			if (temp1[k] == '\0')
+			if (temp1[k] == '\0'|| temp1[k] == ',')
 			{
 				k++;
 				temp2[j + 1] = '\0';
@@ -188,11 +188,12 @@ void xuatThongTinGV(teacher* t)
 }
 
 
-void doiMatKhauGV(teacher* temp,listteacher l)
+teacher* doiMatKhauGV(teacher*& temp,listteacher l)
 {
 	char pass[1000];
 	quaylai:
 	system("cls");
+	cin.ignore();
 	cout << "Vui long nhap lai mat khau cu : "; cin.getline(pass,1000);
 	if (strcmp(temp->acc.pass, pass) != 0)
 	{
@@ -212,6 +213,8 @@ void doiMatKhauGV(teacher* temp,listteacher l)
 		file << t->acc.nameacc << "," << t->acc.pass << ",\n";
 		t = t->Next;
 	}
+	file.close();
+	return temp;
 }
 
 

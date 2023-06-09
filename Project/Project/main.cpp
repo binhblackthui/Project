@@ -21,6 +21,7 @@ int main()
 	docfileGV(t);
 	docFileMonHoc(k);
 	docFileLop(lop);
+	cout << t.Head->acc.pass;
 	do
 	{
 	menu:
@@ -28,7 +29,8 @@ int main()
 		cout << "1. sinh vien." << endl;;
 		cout << "2. giao vien" << endl;
 		cout << "0. thoat" << endl;
-		cin >> x;
+		cout << endl;
+		cout << "nhap su lua chon : "; cin >> x;
 		switch (x)
 		{
 		case 1:
@@ -38,7 +40,8 @@ int main()
 				system("cls");
 				cout << "1. dang nhap." << endl;
 				cout << "0. quay lai" << endl;
-				cin >> x;
+				cout << endl;
+				cout << "nhap su lua chon : "; cin >> x;
 				switch (x)
 				{
 				case 1:
@@ -51,9 +54,12 @@ int main()
 					{
 						cout << "Ban co muon dang nhap lai khong" << endl;
 						cout << "1. co \t 2. khong" << endl;
+						cout << endl;
+						cout << "nhap su lua chon : ";
 						do
 						{
-							cin >> x;
+							cout << endl;
+							cout << "nhap su lua chon : "; cin >> x;
 						} while (x != 1 and x != 2);
 						if (x == 1)
 							goto dangnhaplaiSV;
@@ -71,6 +77,8 @@ int main()
 							cout << "3. danh sach mon hoc duoc dang ki." << endl;
 							cout << "4. diem cac mon hoc." << endl;
 							cout << "0. dang xuat" << endl;
+							cout << endl;
+							cout << "nhap su lua chon : ";
 							do
 							{
 								cin >> x;
@@ -87,6 +95,8 @@ int main()
 								xuatthongtinSV(temp);
 								cout << endl;
 								cout << "0. Quay lai." << endl;
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do
 								{
 									cin >> x;
@@ -100,7 +110,8 @@ int main()
 								temp = doiMKSV(temp, s);
 								cout << endl;
 								cout << "0.quay lai." << endl;
-
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do
 								{
 									cin >> x;
@@ -114,7 +125,8 @@ int main()
 								svxemThongTinLop(k, temp);
 								cout << endl;
 								cout << "0.quay lai." << endl;
-
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do
 								{
 									cin >> x;
@@ -128,7 +140,8 @@ int main()
 								svxemDiem(k, temp);
 								cout << endl;
 								cout << "0.quay lai." << endl;
-
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do
 								{
 									cin >> x;
@@ -158,19 +171,24 @@ int main()
 				system("cls");
 				cout << "1. dang nhap." << endl;
 				cout << "0. quay lai" << endl;
+				cout << endl;
+				cout << "nhap su lua chon : ";
 				cin >> x;
 				if (x == 0)
 					goto menu;
 				if (x == 1)
 				{
-					system("cls");
+					
 				dangnhaplaiGV:
+					system("cls");
 					cin.ignore();
 					temp1 = dangnhapGV(t);
 					if (temp1 == NULL)
 					{
 						cout << "Ban co muon dang nhap lai khong" << endl;
 						cout << "1. co \t 2. khong" << endl;
+						cout << endl;
+						cout << "nhap su lua chon : ";
 						do
 						{
 							cin >> x;
@@ -189,6 +207,8 @@ int main()
 							cout << "3. quan ly danh sach cac lop." << endl;
 							cout << "4. quan ly danh sach mon hoc." << endl;
 							cout << "0. dang xuat" << endl;
+							cout << endl;
+							cout << "nhap su lua chon : ";
 							cin >> x;
 							switch (x)
 							{
@@ -202,6 +222,8 @@ int main()
 								system("cls");
 								xuatThongTinGV(temp1); cout << endl;
 								cout << "0. quay lai." << endl;
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do {
 									cin >> x;
 								} while (x != 0);
@@ -210,9 +232,11 @@ int main()
 							case 2:
 							{
 								system("cls");
-								doiMatKhauGV(temp1, t);
+								temp1=doiMatKhauGV(temp1, t);
 								cout << endl;
 								cout << "0. quay lai." << endl;
+								cout << endl;
+								cout << "nhap su lua chon : ";
 								do {
 									cin >> x;
 								} while (x != 0);
@@ -229,6 +253,8 @@ int main()
 									cout << "4. them 1 sinh vien vao lop." << endl;
 									cout << "5. xem danh sach cac lop" << endl;
 									cout << "0. quay lai" << endl;
+									cout << endl;
+									cout << "nhap su lua chon : ";
 									cin >> x;
 									switch (x)
 									{
@@ -242,6 +268,8 @@ int main()
 										taoNamHoc(lop);
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -255,6 +283,8 @@ int main()
 									
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -269,6 +299,8 @@ int main()
 
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -283,6 +315,8 @@ int main()
 
 											cout << endl;
 											cout << "0. quay lai" << endl;
+											cout << endl;
+											cout << "nhap su lua chon : ";
 											do {
 												cin >> x;
 											} while (x != 0);
@@ -299,6 +333,8 @@ int main()
 
 											cout << endl;
 											cout << "0. quay lai" << endl;
+											cout << endl;
+											cout << "nhap su lua chon : ";
 											do {
 												cin >> x;
 											} while (x != 0);
@@ -323,6 +359,8 @@ int main()
 									cout << "7. xoa 1 sinh vien ra khoi mon hoc." << endl;
 									cout << "8. xoa 1 mon hoc." << endl;
 									cout << "0. quay lai" << endl;
+									cout << endl;
+									cout << "nhap su lua chon : ";
 									cin >> x;
 									switch (x)
 									{
@@ -344,6 +382,8 @@ int main()
 											cout << "ban co muon tao hoc ki moi khong ?" << endl;
 											cout << "1. co \t 2. khong" << endl;
 											cout << endl;
+											cout << endl;
+											cout << "nhap su lua chon : ";
 											do {
 												cin >> x;
 											} while (x != 1 and x != 2);
@@ -357,6 +397,8 @@ int main()
 										
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -371,6 +413,8 @@ int main()
 											cout << "vui long tao hoc ki" << endl;
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -382,6 +426,8 @@ int main()
 										if (xuatKhoaHoc(k)) goto monhoc;
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -394,6 +440,8 @@ int main()
 											goto monhoc;
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -405,6 +453,8 @@ int main()
 										themSVMonHoc(k, s);
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -416,6 +466,8 @@ int main()
 										themSVVaoMonHoc(k);
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -427,6 +479,8 @@ int main()
 										xoa1SVRaKhoiMonHoc(k);
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);
@@ -438,6 +492,8 @@ int main()
 										xoaKhoaHoc(k);
 										cout << endl;
 										cout << "0. quay lai" << endl;
+										cout << endl;
+										cout << "nhap su lua chon : ";
 										do {
 											cin >> x;
 										} while (x != 0);

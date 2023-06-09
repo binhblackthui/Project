@@ -1084,8 +1084,10 @@ void docFileMonHoc(Khoahoc& k)
 	
 	string str;
 	string temp;
-	while (getline(file, str))
+	while (	!file.eof())
 	{
+		getline(file, str);
+		if(!file.eof())
 			n++;
 	}
 
@@ -1097,7 +1099,6 @@ void docFileMonHoc(Khoahoc& k)
 		k.hocki = stoi(str);
 		str = str.substr(str.find(",") + 1, str.length());
 		temp = str.substr(0, str.find(",") - 1);
-
 		k.batdau = taoNgay(temp);
 		str = str.substr(str.find(",") + 1, str.length());
 		k.ketthuc = taoNgay(str);
@@ -1134,7 +1135,7 @@ void docFileMonHoc(Khoahoc& k)
 		temp = str.substr(0, str.find(","));
 		h->tinchi = stoi(temp);
 		str = str.substr(str.find(",") + 1, str.length());
-		
+	
 		temp= str.substr(0, str.find(","));
 		h->top = stoi(temp);
 		str = str.substr(str.find(",") + 1, str.length());
@@ -1149,7 +1150,7 @@ void docFileMonHoc(Khoahoc& k)
 		str = str.substr(str.find(",") + 1, str.length());
 		h->time.gioKetThuc = str.substr(0, str.find(","));
 		str = str.substr(str.find(",") + 1, str.length());
-		
+	
 		h->time.thu= str.substr(0, str.find(","));
 		
 		h->danhsach = new thongtin[h->soluong];
@@ -1204,11 +1205,11 @@ void docFileMonHoc(Khoahoc& k)
 			getline(file1, str);
 			str = str.substr(str.find(",") + 1, str.length());
 			str = str.substr(str.find(",") + 1, str.length());
-			h->danhsach[i].diem.giuaki = stoi(str);
+			h->danhsach[j].diem.giuaki = stoi(str);
 			str = str.substr(str.find(",") + 1, str.length());
-			h->danhsach[i].diem.cuoiki = stoi(str);
+			h->danhsach[j].diem.cuoiki = stoi(str);
 			str = str.substr(str.find(",") + 1, str.length());
-			h->danhsach[i].diem.diemtb = stoi(str);
+			h->danhsach[j].diem.diemtb = stoi(str);
 		}
 		if (k.HP == NULL)
 			k.HP = h;

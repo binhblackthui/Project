@@ -40,4 +40,4 @@ void taoDSGV(listteacher& l);
 teacher* taoGV();
 void ganNULLGV(listteacher& l);
 void xuatThongTinGV(teacher* t);
-void doiMatKhauGV(teacher* temp, listteacher l);
+teacher* doiMatKhauGV(teacher*& temp, listteacher l);
