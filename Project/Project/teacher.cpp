@@ -163,7 +163,7 @@ teacher* dangnhapGV(listteacher& l)
 	char pass[100];
 quaylai:
 	temp = l.Head;
-	cout << "Ten dang nhap (email) : "; cin.getline(name, 100);
+	cout << "Ten dang nhap : "; cin.getline(name, 100);
 	cout << "Mat khau : "; cin.getline(pass, 100);
 	while (temp!=NULL)
 	{

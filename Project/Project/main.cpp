@@ -58,8 +58,7 @@ int main()
 						cout << "nhap su lua chon : ";
 						do
 						{
-							cout << endl;
-							cout << "nhap su lua chon : "; cin >> x;
+							 cin >> x;
 						} while (x != 1 and x != 2);
 						if (x == 1)
 							goto dangnhaplaiSV;
