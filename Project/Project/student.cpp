@@ -1,7 +1,7 @@
 ﻿#include"student.h"
 
 
-void demsoluongsv(list& l)//dem so luong sinh vien trong file csv
+void demsoluongsv(list& l)//TAO 1 DANH SACH LIEN KET SO luong sinh vien trong file TAI KHOAN SINH VIEN
 {
 	char temp[10000];
 	ifstream file;
@@ -17,7 +17,7 @@ void demsoluongsv(list& l)//dem so luong sinh vien trong file csv
 }
 
 
-void docfileSV(list& l)
+void docfileSV(list& l)//DOC FILE TAI KHOAN VA THONG TIN SINH VIEN LUU VAO DANH SACH LIEN KET SINH VIEN
 {
 	char temp1[1000];//chep chuoi ra tu file
 	char temp2[100];//chep chuoi ra tu temp1
@@ -146,7 +146,7 @@ void docfileSV(list& l)
 
 
 
-student* dangnhapSV(list& l)
+student* dangnhapSV(list& l)// DANG NHAP TAI KHOAN SINH VIEN
 {
 	student* temp = l.pHead;
 	char name[100];
@@ -186,7 +186,7 @@ void xuatthongtinSV(student* s)
 
 
 
-student* taoSV()
+student* taoSV()//TAO RA MOT TAI KHOA SINH VIEN
 {
 	student* s = new student;
 	s->pNext = NULL;
@@ -195,14 +195,14 @@ student* taoSV()
 
 
 
-void GanNULLSV(list& l)
+void GanNULLSV(list& l)//GAN DAU DANH SACH LIEN KET BANG NULL
 {
 	l.pHead = NULL;
 }
 
 
 
-void themDauDSSV(list& l)
+void themDauDSSV(list& l)//THEM VAO DAU DANH SACH LIEN KET SINH VIEN
 {
 
 	student* s = taoSV();
@@ -215,7 +215,7 @@ void themDauDSSV(list& l)
 
 
 
-student* doiMKSV(student*& temp, list l)
+student* doiMKSV(student*& temp, list l)//DOI MAT KHAU TAI KHOAN SINH VIEN
 {
 	student* acc = l.pHead;
 	char pass[100];
@@ -273,7 +273,7 @@ Lop* taoLop()
 }
 
 
-void docFileLop(listLop& l)
+void docFileLop(listLop& l)// DOC FILE LUU DANH SACH LOP HOC DA DUOC TAO TRUOC
 {
 	ifstream file("danh sach lop.csv", ios::in);
 	if (file.fail())
@@ -357,7 +357,7 @@ void docFileLop(listLop& l)
 }
 
 
-void ghiDSLop(listLop l)
+void ghiDSLop(listLop l)//CAP NHAT THONG TIN MOI VAO FILE DANH SACH LOP
 {
 	Lop* temp = l.head;
 
@@ -375,7 +375,7 @@ void ghiDSLop(listLop l)
 	}
 }
 
-void taoNamHoc(listLop& l)
+void taoNamHoc(listLop& l)//TAO MOT NAM HOC MOI
 {
 	cout << "nhap nam hoc (ex : 2020-2021) : ";
 	cin.ignore();
@@ -384,7 +384,7 @@ void taoNamHoc(listLop& l)
 }
 
 
-void taoLopHoc(listLop& l)
+void taoLopHoc(listLop& l)//TAO MOT LOP MOI
 {
 	Lop* lop = taoLop();
 	cout << "Ten lop : ";
@@ -419,7 +419,7 @@ void taoLopHoc(listLop& l)
 	}
 }
 
-void xuatDSLop(listLop l)
+void xuatDSLop(listLop l)//XUAT RA CAC LOP DA DUOC TAO
 {
 	Lop* temp = l.head;
 	int i = 1;
@@ -432,7 +432,7 @@ void xuatDSLop(listLop l)
 	}
 }
 
-void xuatLop(listLop l)
+void xuatLop(listLop l)//XUAT RA THONG TIN LOP CAN XEM
 {
 	Lop* temp = l.head;
 	cin.ignore();
@@ -719,7 +719,7 @@ void them1SVLop(listLop& l, list& s)
 
 
 
-void ghifile(list s)
+void ghifile(list s)//CAP NHAT THONG TIN MOI VAO FILE THONG TIN VA TAI KHOAN SINH VIEN
 {
 	student* sv = s.pHead;
 	ofstream file1;
@@ -742,7 +742,8 @@ void ghifile(list s)
 
 
 
-Ngay taoNgay(string str) {
+Ngay taoNgay(string str)//TACH CHUOI STRING SANG  CAU TRUC NGAY 
+{
 	Ngay date = {};
 	int i = 0;
 	char temp[10];
@@ -789,7 +790,7 @@ Ngay taoNgay(string str) {
 	return date;
 }
 
-void taoHocKi(Khoahoc& k)
+void taoHocKi(Khoahoc& k)// TAO MOT HOC KI MOI
 {
 	string temp;
 	cout << "Hoc ki : "; cin >> k.hocki;
@@ -804,19 +805,19 @@ void taoHocKi(Khoahoc& k)
 }
 
 
-Hocphan* taoMon()
+Hocphan* taoMon()//TAO MOT MON HOC RONG
 {
 	Hocphan *temp = new Hocphan;
 	temp->next = NULL;
 	return temp;
 }
 
-void inHoa(string& str)
+void inHoa(string& str)//INT HOA CAC KI TU TRONG STRING
 {
 	for (int i = 0; i < str.size(); i++)
 		str[i] = towupper(str[i]);
 }
-void taoMonHoc(Khoahoc& k)
+void taoMonHoc(Khoahoc& k)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 {
 	Hocphan* mon = taoMon();
 	cout << "nhap ma hoc pha : ";
@@ -865,7 +866,7 @@ void taoMonHoc(Khoahoc& k)
 }
 
 
-int themSVVaoMonHoc(Khoahoc k)
+int themSVVaoMonHoc(Khoahoc k)//THEM MOT SINH VIEN VAO MOT MON HOC DA DUOC TAO TRUOC
 {
 	Hocphan* hp = k.HP;
 	int i = 1;
@@ -965,7 +966,7 @@ int themSVVaoMonHoc(Khoahoc k)
 	return 0;
 }
 
-int xuatKhoaHoc(Khoahoc k)
+int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THONG TIN CHI TIET TUNG MON HOC
 {
 	Hocphan* temp = k.HP;
 	int i = 1;
@@ -1027,7 +1028,7 @@ int xuatKhoaHoc(Khoahoc k)
 	return 0;
 }
 
-void xuatMonHhoc(Hocphan *temp)
+void xuatMonHhoc(Hocphan *temp)//XUAT THONG TIN LOP HOC
 {
 	system("cls");
 	cout << "Ma hoc phan : " << temp->MaHP<<endl;
@@ -1042,7 +1043,7 @@ void xuatMonHhoc(Hocphan *temp)
 		cout << setw(10) << left << i+1 << setw(15) << left << temp->danhsach[i].info.MSSV << setw(30) << left << temp->danhsach[i].info.tensv << setw(20) << left <<temp->danhsach[i].info.lop<< setw(20) << left << temp->danhsach[i].info.gtinh << setw(20) << left << temp->danhsach[i].info.ngsinh << setw(10) << left << temp->danhsach[i].info.CCCD << endl;
 }
 
-void ghiFileMonHoc(Khoahoc k)
+void ghiFileMonHoc(Khoahoc k)//CAP NHAT THONG TIN VAO FILE MON HOC
 {
 	ofstream file("mon hoc.csv");
 	file << k.hocki << "," << k.batdau.ngay << "/" << k.batdau.thang << "/" << k.batdau.nam << "," << k.ketthuc.ngay << "/" << k.ketthuc.thang << "/" << k.ketthuc.nam << ",\n";
@@ -1075,7 +1076,7 @@ void ghiFileMonHoc(Khoahoc k)
 	}
 }
 
-void docFileMonHoc(Khoahoc& k)
+void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 {
 	ifstream file("mon hoc.csv", ios::in);
 	if (file.fail())
@@ -1222,7 +1223,7 @@ void docFileMonHoc(Khoahoc& k)
 	file.close();
 }
 
-int suaMonHoc(Khoahoc k)
+int suaMonHoc(Khoahoc k)//SUA THONG TIN MON HOC
 {
 	string str;
 	cin.ignore();
@@ -1331,7 +1332,7 @@ void suaMon(Hocphan*& temp)
 }
 
 
-int themSVMonHoc(Khoahoc& k, list l)
+int themSVMonHoc(Khoahoc& k, list l)//THEM SINH VIEN VAO 1 MON HOC
 {
 	cout << "Nhap Ma Hoc : ";
 	string str;
@@ -1395,7 +1396,7 @@ int themSVMonHoc(Khoahoc& k, list l)
 }
 
 
-int xoa1SVRaKhoiMonHoc(Khoahoc k)
+int xoa1SVRaKhoiMonHoc(Khoahoc k)//XOA 1 SINH VIEN RA KHOI 1 MON HOC 
 {
 	cout << "Nhap Ma Hoc : ";
 	string str;
@@ -1442,7 +1443,7 @@ int xoa1SVRaKhoiMonHoc(Khoahoc k)
 }
 
 
-void xoaKhoaHoc(Khoahoc& k)
+void xoaKhoaHoc(Khoahoc& k)//XOA DI MOT MON HOC
 {
 	if (k.HP == NULL)
 	{
@@ -1498,7 +1499,8 @@ void xoaKhoaHoc(Khoahoc& k)
 	ghiFileMonHoc(k);
 }
 
-void xuatDSDiem(Hocphan *temp) {
+void xuatDSDiem(Hocphan *temp)//XUAT DANH SACH DIEM CUA SINH VIEN TRONG 1 MON HOC
+{
 	system("cls");
 	cout << "Ma hoc phan : " << temp->MaHP << endl;
 	cout << "Ten hoc pha : " << temp->TenHP << endl;
@@ -1514,7 +1516,7 @@ void xuatDSDiem(Hocphan *temp) {
 
 
 
-void svxemThongTinLop(Khoahoc k, student* sv)
+void svxemThongTinLop(Khoahoc k, student* sv)//XEM THONG TIN CUA 1 SINH VIEN DUOC DANG KI TRONG CAC MON HOC
 {
 	Hocphan* temp = k.HP;
 	cout << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << endl;
@@ -1531,7 +1533,7 @@ void svxemThongTinLop(Khoahoc k, student* sv)
 	}
 }
 
-void svxemDiem(Khoahoc k, student* sv)
+void svxemDiem(Khoahoc k, student* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON HOC
 {
 	Hocphan* temp = k.HP;
 	cout<< setw(15) << left << "Ma hoc phan" << setw(30) << left << "Ten hoc phan" << setw(15) << left << "diem giua ki" << setw(15) << left << "cuoi ki" << setw(15) << left << "diem trung binh" << endl;
