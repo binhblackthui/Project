@@ -1535,6 +1535,8 @@ void svxemThongTinLop(Khoahoc k, student* sv)//XEM THONG TIN CUA 1 SINH VIEN DUO
 
 void svxemDiem(Khoahoc k, student* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON HOC
 {
+	int sum = 0;
+	int heso = 0;
 	Hocphan* temp = k.HP;
 	cout<< setw(15) << left << "Ma hoc phan" << setw(30) << left << "Ten hoc phan" << setw(15) << left << "diem giua ki" << setw(15) << left << "cuoi ki" << setw(15) << left << "diem trung binh" << endl;
 	while (temp != NULL)
@@ -1543,8 +1545,22 @@ void svxemDiem(Khoahoc k, student* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON 
 			if (sv->info.MSSV == temp->danhsach[i].info.MSSV)
 			{
 				cout <<setw(15) << left << temp->MaHP << setw(30) << left << temp->TenHP << setw(15) << left << temp->danhsach[i].diem.giuaki << setw(15) << left << temp->danhsach[i].diem.cuoiki << setw(15) << left << temp->danhsach[i].diem.diemtb << endl;
+				sum += temp->danhsach[i].diem.diemtb;
+				heso += temp->tinchi;
 				break;
 			}
 		temp = temp->next;
 	}
+	float diemtb_all;
+	if (heso != 0)
+	{
+		diemtb_all = sum / heso;
+	}
+	else
+	{
+		diemtb_all = 0;
+	}
+	cout << endl;
+	cout << "diem trung binh hoc ki cac mon : " << diemtb_all << endl;
+
 }
