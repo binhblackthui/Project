@@ -970,10 +970,10 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 {
 	Hocphan* temp = k.HP;
 	int i = 1;
-	cout << setw(10) << left << "stt" << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << endl;
+	cout << setw(10) << left << "stt" << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << setw(20) << left << "si so"<<endl;
 	while (temp != NULL)
 	{
-		cout << setw(10) << left << i << setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << endl;
+		cout << setw(10) << left << i << setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << setw(0) << left << temp->top<< setw(0) << left << "/"<<temp->soluong << endl;
 		temp = temp->next;
 		i++;
 	}

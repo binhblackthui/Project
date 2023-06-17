@@ -191,9 +191,10 @@ void xuatThongTinGV(teacher* t)
 teacher* doiMatKhauGV(teacher*& temp,listteacher l)
 {
 	char pass[1000];
+	cin.ignore();
 	quaylai:
 	system("cls");
-	cin.ignore();
+	
 	cout << "Vui long nhap lai mat khau cu : "; cin.getline(pass,1000);
 	if (strcmp(temp->acc.pass, pass) != 0)
 	{
