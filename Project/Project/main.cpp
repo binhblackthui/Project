@@ -5,11 +5,11 @@
 int main()
 {
 	Khoahoc k;
-	list s;
+	listSinhVien s;
 	int namhoc = 0;
-	listteacher t;
-	student* temp;
-	teacher* temp1;
+	listGiaoVien t;
+	SinhVien* temp;
+	GiaoVien* temp1;
 	listLop lop;
 	GanNULLSV(s);
 	demsoluongsv(s);

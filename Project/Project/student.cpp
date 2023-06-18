@@ -1,7 +1,7 @@
 ﻿#include"student.h"
 
 
-void demsoluongsv(list& l)//TAO 1 DANH SACH LIEN KET SO luong sinh vien trong file TAI KHOAN SINH VIEN
+void demsoluongsv(listSinhVien& l)//TAO 1 DANH SACH LIEN KET SO luong sinh vien trong file TAI KHOAN SINH VIEN
 {
 	char temp[10000];
 	ifstream file;
@@ -17,11 +17,11 @@ void demsoluongsv(list& l)//TAO 1 DANH SACH LIEN KET SO luong sinh vien trong fi
 }
 
 
-void docfileSV(list& l)//DOC FILE TAI KHOAN VA THONG TIN SINH VIEN LUU VAO DANH SACH LIEN KET SINH VIEN
+void docfileSV(listSinhVien& l)//DOC FILE TAI KHOAN VA THONG TIN SINH VIEN LUU VAO DANH SACH LIEN KET SINH VIEN
 {
 	char temp1[1000];//chep chuoi ra tu file
 	char temp2[100];//chep chuoi ra tu temp1
-	student* s = l.pHead;
+	SinhVien* s = l.pHead;
 	ifstream file1;
 	ifstream file2;
 	file1.open("accstudent.csv", ios::in);
@@ -146,9 +146,9 @@ void docfileSV(list& l)//DOC FILE TAI KHOAN VA THONG TIN SINH VIEN LUU VAO DANH 
 
 
 
-student* dangnhapSV(list& l)// DANG NHAP TAI KHOAN SINH VIEN
+SinhVien* dangnhapSV(listSinhVien& l)// DANG NHAP TAI KHOAN SINH VIEN
 {
-	student* temp = l.pHead;
+	SinhVien* temp = l.pHead;
 	char name[100];
 	char pass[100];
 quaylai:
@@ -173,7 +173,7 @@ quaylai:
 
 
 
-void xuatthongtinSV(student* s)
+void xuatthongtinSV(SinhVien* s)
 {
 	cout << "Ma so sinh vien : " << s->info.MSSV << endl;
 	cout << "Ho va ten : " << s->info.tensv << endl;
@@ -186,26 +186,26 @@ void xuatthongtinSV(student* s)
 
 
 
-student* taoSV()//TAO RA MOT TAI KHOA SINH VIEN
+SinhVien* taoSV()//TAO RA MOT TAI KHOA SINH VIEN
 {
-	student* s = new student;
+	SinhVien* s = new SinhVien;
 	s->pNext = NULL;
 	return s;
 }
 
 
 
-void GanNULLSV(list& l)//GAN DAU DANH SACH LIEN KET BANG NULL
+void GanNULLSV(listSinhVien& l)//GAN DAU DANH SACH LIEN KET BANG NULL
 {
 	l.pHead = NULL;
 }
 
 
 
-void themDauDSSV(list& l)//THEM VAO DAU DANH SACH LIEN KET SINH VIEN
+void themDauDSSV(listSinhVien& l)//THEM VAO DAU DANH SACH LIEN KET SINH VIEN
 {
 
-	student* s = taoSV();
+	SinhVien* s = taoSV();
 	s->pNext = l.pHead;
 	l.pHead = s;
 }
@@ -215,9 +215,9 @@ void themDauDSSV(list& l)//THEM VAO DAU DANH SACH LIEN KET SINH VIEN
 
 
 
-student* doiMKSV(student*& temp, list l)//DOI MAT KHAU TAI KHOAN SINH VIEN
+SinhVien* doiMKSV(SinhVien*& temp, listSinhVien l)//DOI MAT KHAU TAI KHOAN SINH VIEN
 {
-	student* acc = l.pHead;
+	SinhVien* acc = l.pHead;
 	char pass[100];
 	int x;
 quaylai:
@@ -312,7 +312,7 @@ void docFileLop(listLop& l)// DOC FILE LUU DANH SACH LOP HOC DA DUOC TAO TRUOC
 		str = str.substr(str.find(",") + 1, str.length());
 
 		temp->nam = stoi(str);
-		temp->danhsach = new infostudent[temp->soluong];
+		temp->danhsach = new thongtinSV[temp->soluong];
 
 		str = temp->tenLop + ".csv";
 
@@ -395,7 +395,7 @@ void taoLopHoc(listLop& l)//TAO MOT LOP MOI
 	getline(cin, lop->khoa);
 	cout << "So luong sinh vien (Max = 50) : ";
 	cin >> lop->soluong;
-	lop->danhsach = new infostudent[lop->soluong];
+	lop->danhsach = new thongtinSV[lop->soluong];
 	lop->nam = stoi(l.namhoc);
 	lop->top = 0;
 	Lop* temp = l.head;
@@ -467,7 +467,7 @@ void xuatLop(listLop l)//XUAT RA THONG TIN LOP CAN XEM
 	}
 }
 
-void themVaoLopFile(listLop& lop, list& l)
+void themVaoLopFile(listLop& lop, listSinhVien& l)
 {
 	Lop* temp = lop.head;
 	cin.ignore();
@@ -523,11 +523,11 @@ void themVaoLopFile(listLop& lop, list& l)
 	}
 	f.open(str, ios::in);
 	
-	list s;
+	listSinhVien s;
 	s.pHead = NULL;
 	for (int i = 0; i < n; i++)
 		themDauDSSV(s);
-	student* sv=s.pHead;
+	SinhVien* sv=s.pHead;
 	for (int i = temp->top; i < temp->top+n; i++)
 	{
 		getline(f, str);
@@ -618,7 +618,7 @@ void themVaoLopFile(listLop& lop, list& l)
 }
 
 
-void them1SVLop(listLop& l, list& s)
+void them1SVLop(listLop& l, listSinhVien& s)
 {
 	Lop* temp = l.head;
 	cin.ignore();
@@ -643,7 +643,7 @@ void them1SVLop(listLop& l, list& s)
 		cout << "lop da day" << endl;
 		return;
 	}
-	student* svnew = taoSV();
+	SinhVien* svnew = taoSV();
 
 	cout << "nhap thong tin sinh vien can them vao : " << endl;
 	cout << "Ma so sinh vien : ";
@@ -690,7 +690,7 @@ void them1SVLop(listLop& l, list& s)
 		s.pHead = svnew;
 	}
 	else {
-		student* sv = s.pHead;
+		SinhVien* sv = s.pHead;
 		while (sv != NULL)
 		{
 			if (sv->pNext == NULL)
@@ -719,9 +719,9 @@ void them1SVLop(listLop& l, list& s)
 
 
 
-void ghifile(list s)//CAP NHAT THONG TIN MOI VAO FILE THONG TIN VA TAI KHOAN SINH VIEN
+void ghifile(listSinhVien s)//CAP NHAT THONG TIN MOI VAO FILE THONG TIN VA TAI KHOAN SINH VIEN
 {
-	student* sv = s.pHead;
+	SinhVien* sv = s.pHead;
 	ofstream file1;
 	ofstream file2;
 	file1.open("infostudent.csv", ios::out);
@@ -847,7 +847,7 @@ void taoMonHoc(Khoahoc& k)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 	cout << "tiet ket thuc (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : ";
 	getline(cin, mon->time.gioKetThuc);
 	inHoa(mon->time.gioKetThuc);
-	mon->danhsach = new thongtin[mon->soluong];
+	mon->danhsach = new Thongtin[mon->soluong];
 	mon->top = 0;
 	if (k.HP == NULL)
 	{
@@ -1154,7 +1154,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 	
 		h->time.thu= str.substr(0, str.find(","));
 		
-		h->danhsach = new thongtin[h->soluong];
+		h->danhsach = new Thongtin[h->soluong];
 
 		temp = h->MaHP + ".csv";
 
@@ -1332,7 +1332,7 @@ void suaMon(Hocphan*& temp)
 }
 
 
-int themSVMonHoc(Khoahoc& k, list l)//THEM SINH VIEN VAO 1 MON HOC
+int themSVMonHoc(Khoahoc& k, listSinhVien l)//THEM SINH VIEN VAO 1 MON HOC
 {
 	cout << "Nhap Ma Hoc : ";
 	string str;
@@ -1365,7 +1365,7 @@ int themSVMonHoc(Khoahoc& k, list l)//THEM SINH VIEN VAO 1 MON HOC
 	}
 
 	cout << "Nhap ma so sinh vien can them vao : ";
-	student* sv = l.pHead;
+	SinhVien* sv = l.pHead;
 	int x;
 	cin >> x;
 	while (sv != NULL)
@@ -1516,7 +1516,7 @@ void xuatDSDiem(Hocphan *temp)//XUAT DANH SACH DIEM CUA SINH VIEN TRONG 1 MON HO
 
 
 
-void svxemThongTinLop(Khoahoc k, student* sv)//XEM THONG TIN CUA 1 SINH VIEN DUOC DANG KI TRONG CAC MON HOC
+void svxemThongTinLop(Khoahoc k, SinhVien* sv)//XEM THONG TIN CUA 1 SINH VIEN DUOC DANG KI TRONG CAC MON HOC
 {
 	Hocphan* temp = k.HP;
 	cout << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << endl;
@@ -1533,7 +1533,7 @@ void svxemThongTinLop(Khoahoc k, student* sv)//XEM THONG TIN CUA 1 SINH VIEN DUO
 	}
 }
 
-void svxemDiem(Khoahoc k, student* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON HOC
+void svxemDiem(Khoahoc k, SinhVien* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON HOC
 {
 	int sum = 0;
 	int heso = 0;

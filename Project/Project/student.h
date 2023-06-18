@@ -2,13 +2,11 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-#include <cstdlib>
 #include<string.h>
-#include<cctype>
 #include<iomanip>
 using namespace std;
 
-struct infostudent
+struct thongtinSV
 {
 	long long MSSV;
 	char* tensv;
@@ -17,16 +15,16 @@ struct infostudent
 	char* ngsinh;
 	long long CCCD;
 };
-struct account
+struct taikhoanSV
 {
 	char* tenTK;
 	char* password;
 };
-struct student
+struct SinhVien
 {
-	account acc;
-	infostudent info;
-	student* pNext;
+	taikhoanSV acc;
+	thongtinSV info;
+	SinhVien* pNext;
 };
 struct Lop
 {
@@ -35,7 +33,7 @@ struct Lop
 	int soluong;
 	int top;
 	int nam;
-	infostudent* danhsach=NULL;
+	thongtinSV* danhsach=NULL;
 	Lop* next;
 };
 
@@ -43,9 +41,9 @@ struct listLop {
 	Lop* head = NULL;
 	string namhoc;
 };
-struct list
+struct listSinhVien 
 {
-	student* pHead;
+	SinhVien* pHead;
 };
 
 struct Ngay
@@ -68,8 +66,8 @@ struct Diem {
 	float diemtb = 0;
 };
 
-struct thongtin {
-	infostudent info{};
+struct Thongtin {
+	thongtinSV info{};
 	Diem diem{};
 };
 
@@ -82,7 +80,7 @@ struct Hocphan
 	int tinchi=0;
 	Thoigian time;
 	int soluong=0;
-	thongtin* danhsach=NULL;
+	Thongtin* danhsach=NULL;
 
 	Hocphan* next;
 	int top = 0;
@@ -98,15 +96,15 @@ struct Khoahoc
 };
 
 
-void docfileSV(list& l);//dua danh sach sinh da duoc dang ki ra mang
-void demsoluongsv(list& l);//dem so luong sinh vien da đănn kí
-student* taoSV();
-void GanNULLSV(list& l);
-void themDauDSSV(list& l);
-void xuatthongtinSV(student* s);
-student* dangnhapSV(list& l);
-student* doiMKSV(student*& temp, list l);
-void ghifile(list s);
+void docfileSV(listSinhVien& l);//dua danh sach sinh da duoc dang ki ra mang
+void demsoluongsv(listSinhVien& l);//dem so luong sinh vien da đănn kí
+SinhVien* taoSV();
+void GanNULLSV(listSinhVien& l);
+void themDauDSSV(listSinhVien& l);
+void xuatthongtinSV(SinhVien* s);
+SinhVien* dangnhapSV(listSinhVien& l);
+SinhVien* doiMKSV(SinhVien*& temp, listSinhVien l);
+void ghifile(listSinhVien s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
 int themSVVaoMonHoc(Khoahoc k);
@@ -118,12 +116,12 @@ void xuatMonHhoc(Hocphan* h);
 void inHoa(string& str);
 void suaMon(Hocphan*& temp);
 int suaMonHoc(Khoahoc k);
-int themSVMonHoc(Khoahoc& k, list l);
+int themSVMonHoc(Khoahoc& k, listSinhVien l);
 int xoa1SVRaKhoiMonHoc(Khoahoc k);
 void xoaKhoaHoc(Khoahoc& k);
 void xuatDSDiem(Hocphan* temp);
-void svxemDiem(Khoahoc k, student* sv);
-void svxemThongTinLop(Khoahoc k, student* sv);
+void svxemDiem(Khoahoc k, SinhVien* sv);
+void svxemThongTinLop(Khoahoc k, SinhVien* sv);
 Lop* taoLop();
 void docFileLop(listLop& l);
 void ghiDSLop(listLop l);
@@ -131,5 +129,5 @@ void taoNamHoc(listLop& l);
 void taoLopHoc(listLop& l);
 void xuatDSLop(listLop l);
 void xuatLop(listLop l);
-void themVaoLopFile(listLop& l, list& s);
-void them1SVLop(listLop& l, list& s);
+void themVaoLopFile(listLop& l, listSinhVien& s);
+void them1SVLop(listLop& l, listSinhVien& s);

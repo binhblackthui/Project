@@ -1,21 +1,21 @@
 #include"teacher.h"
 
 
-void ganNULLGV(listteacher& l)
+void ganNULLGV(listGiaoVien& l)
 {
 	l.Head = NULL;
 }
 
 
-teacher* taoGV()
+GiaoVien* taoGV()
 {
-	teacher* temp = new teacher;
+	GiaoVien* temp = new GiaoVien;
 	temp->Next = NULL;
 	return temp;
 }
 
 
-void taoDSGV(listteacher& l)//dem so luong sinh vien trong file csv
+void taoDSGV(listGiaoVien& l)//dem so luong sinh vien trong file csv
 {
 	char temp[10000];
 	ifstream file;
@@ -32,20 +32,20 @@ void taoDSGV(listteacher& l)//dem so luong sinh vien trong file csv
 }
 
 
-void themDauDSGV(listteacher& l)
+void themDauDSGV(listGiaoVien& l)
 {
 
-	teacher* t = taoGV();
+	GiaoVien* t = taoGV();
 	t->Next = l.Head;
 	l.Head = t;
 }
 
 
-void docfileGV(listteacher& l)
+void docfileGV(listGiaoVien& l)
 {
 	char temp1[1000];//chep chuoi ra tu file
 	char temp2[100];//chep chuoi ra tu temp1
-	teacher* t = l.Head;
+	GiaoVien* t = l.Head;
 	ifstream file1;
 	ifstream file2;
 	file1.open("accteacher.csv", ios::in);
@@ -156,9 +156,9 @@ void docfileGV(listteacher& l)
 }
 
 
-teacher* dangnhapGV(listteacher& l)
+GiaoVien* dangnhapGV(listGiaoVien& l)
 {
-	teacher* temp = l.Head;
+	GiaoVien* temp = l.Head;
 	char name[100];
 	char pass[100];
 quaylai:
@@ -178,7 +178,7 @@ quaylai:
 }
 
 
-void xuatThongTinGV(teacher* t)
+void xuatThongTinGV(GiaoVien* t)
 {
 	cout << "Ho va ten : " << t->info.tenGV << endl;;
 	cout << "Email : " << t->info.mail << endl;
@@ -188,7 +188,7 @@ void xuatThongTinGV(teacher* t)
 }
 
 
-teacher* doiMatKhauGV(teacher*& temp,listteacher l)
+GiaoVien* doiMatKhauGV(GiaoVien*& temp,listGiaoVien l)
 {
 	char pass[1000];
 	cin.ignore();
@@ -208,7 +208,7 @@ teacher* doiMatKhauGV(teacher*& temp,listteacher l)
 	ofstream file;
 	file.open("accteacher.csv", ios::out);
 	file << "ten tai khoan,mat khau,\n";
-	teacher* t = l.Head;
+	GiaoVien* t = l.Head;
 	while (t!=NULL)
 	{
 		file << t->acc.nameacc << "," << t->acc.pass << ",\n";

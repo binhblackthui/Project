@@ -2,12 +2,11 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-#include <cstdlib>
 #include<string.h>
-#include<cctype>
+
 using namespace std;
 
-struct infoteacher
+struct thongtinGV
 {
 	char* tenGV;
 	char* ngsinh;
@@ -15,29 +14,29 @@ struct infoteacher
 	char* mail;
 	char* gtinh;
 };
-struct accteacher
+struct taikhoanGV
 {
 	char* nameacc;
 	char *pass;
 };
-struct teacher
+struct GiaoVien
 {
-	infoteacher info;
-	accteacher acc;
-	teacher* Next;
+	thongtinGV info;
+	taikhoanGV acc;
+	GiaoVien* Next;
 };
-struct listteacher
+struct listGiaoVien
 {
-	teacher* Head;
+	GiaoVien* Head;
 };
 
 
-void themDauDSGV(listteacher& l);
-teacher* dangnhapGV(listteacher& l);
-void docfileGV(listteacher& l);
-void themDauDSGV(listteacher& l);
-void taoDSGV(listteacher& l);
-teacher* taoGV();
-void ganNULLGV(listteacher& l);
-void xuatThongTinGV(teacher* t);
-teacher* doiMatKhauGV(teacher*& temp, listteacher l);
+void themDauDSGV(listGiaoVien& l);
+GiaoVien* dangnhapGV(listGiaoVien& l);
+void docfileGV(listGiaoVien& l);
+void themDauDSGV(listGiaoVien& l);
+void taoDSGV(listGiaoVien& l);
+GiaoVien* taoGV();
+void ganNULLGV(listGiaoVien& l);
+void xuatThongTinGV(GiaoVien* t);
+GiaoVien* doiMatKhauGV(GiaoVien*& temp, listGiaoVien l);
