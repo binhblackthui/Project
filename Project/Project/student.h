@@ -80,6 +80,8 @@ struct Hocphan
 	int tinchi=0;
 	Thoigian time;
 	int soluong=0;
+	int nam = 0;
+	int hki = 0;
 	Thongtin* danhsach=NULL;
 
 	Hocphan* next;
@@ -88,7 +90,7 @@ struct Hocphan
 struct Khoahoc
 {
 	
-	int hocki = 0;;
+	int hocki = 0;
 	Ngay batdau = {};
 	Ngay ketthuc = {};
 	Hocphan* HP=NULL;
@@ -107,17 +109,17 @@ SinhVien* doiMKSV(SinhVien*& temp, listSinhVien l);
 void ghifile(listSinhVien s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
-int themSVVaoMonHoc(Khoahoc k);
+int themSVVaoMonHoc(Khoahoc k, listLop  lop);
 void ghiFileMonHoc(Khoahoc k);
-void taoMonHoc(Khoahoc& k);
+void taoMonHoc(Khoahoc& k, listLop lop);
 int xuatKhoaHoc(Khoahoc k);
 void docFileMonHoc(Khoahoc& k);
 void xuatMonHhoc(Hocphan* h);
 void inHoa(string& str);
 void suaMon(Hocphan*& temp);
-int suaMonHoc(Khoahoc k);
-int themSVMonHoc(Khoahoc& k, listSinhVien l);
-int xoa1SVRaKhoiMonHoc(Khoahoc k);
+int suaMonHoc(Khoahoc k,listLop lop);
+int themSVMonHoc(Khoahoc& k, listSinhVien l, listLop lop);
+int xoa1SVRaKhoiMonHoc(Khoahoc k, listLop  lop);
 void xoaKhoaHoc(Khoahoc& k);
 void xuatDSDiem(Hocphan* temp);
 void svxemDiem(Khoahoc k, SinhVien* sv);

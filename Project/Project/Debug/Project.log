@@ -1,17 +1,11 @@
-﻿  main.cpp
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\main.cpp(247,9): warning C4102: 'lophoc': unreferenced label
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\main.cpp(17,6): warning C4101: 'n': unreferenced local variable
-  student.cpp
+﻿  student.cpp
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(154,1): warning C4102: 'quaylai': unreferenced label
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(750,11): warning C4018: '<': signed/unsigned mismatch
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(817,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(818,20): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1209,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1211,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1213,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1548,34): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1557,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  teacher.cpp
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\teacher.cpp(164,1): warning C4102: 'quaylai': unreferenced label
-  Generating Code...
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1259,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1261,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1263,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1644,34): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1653,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Project.vcxproj -> C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Debug\Project.exe

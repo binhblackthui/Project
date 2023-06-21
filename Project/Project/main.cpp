@@ -407,7 +407,7 @@ int main()
 									{
 										system("cls");
 										if (k.hocki != 0)
-											taoMonHoc(k);
+											taoMonHoc(k,lop);
 										else
 											cout << "vui long tao hoc ki" << endl;
 										cout << endl;
@@ -435,7 +435,7 @@ int main()
 									case 4:
 									{
 										system("cls");
-										if (suaMonHoc(k))
+										if (suaMonHoc(k,lop))
 											goto monhoc;
 										cout << endl;
 										cout << "0. quay lai" << endl;
@@ -449,7 +449,7 @@ int main()
 									case 5:
 									{
 										system("cls");
-										themSVMonHoc(k, s);
+										themSVMonHoc(k, s,lop);
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;
@@ -462,7 +462,7 @@ int main()
 									case 6:
 									{
 										system("cls");
-										themSVVaoMonHoc(k);
+										themSVVaoMonHoc(k, lop);
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;
@@ -475,7 +475,7 @@ int main()
 									case 7:
 									{
 										system("cls");
-										xoa1SVRaKhoiMonHoc(k);
+										xoa1SVRaKhoiMonHoc(k,lop);
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;
