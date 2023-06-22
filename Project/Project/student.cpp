@@ -5,7 +5,7 @@ void demsoluongsv(listSinhVien& l)//TAO 1 DANH SACH LIEN KET SO luong sinh vien 
 {
 	char temp[10000];
 	ifstream file;
-	file.open("accstudent.csv", ios::in);
+	file.open("../Project/Tai Khoan/accstudent.csv", ios::in);
 	if (file.fail() == true)
 		cout << "mo file khon thanh cong";
 	file.getline(temp, 1000);
@@ -24,8 +24,8 @@ void docfileSV(listSinhVien& l)//DOC FILE TAI KHOAN VA THONG TIN SINH VIEN LUU V
 	SinhVien* s = l.pHead;
 	ifstream file1;
 	ifstream file2;
-	file1.open("accstudent.csv", ios::in);
-	file2.open("infostudent.csv", ios::in);
+	file1.open("../Project/Tai Khoan/accstudent.csv", ios::in);
+	file2.open("../Project/Thong Tin/infostudent.csv", ios::in);
 	file1.getline(temp1, 1000);
 	file2.getline(temp1, 1000);//bỏ hai dong đầu file text
 	while (s != NULL)
@@ -231,7 +231,7 @@ quaylai:
 		strcpy(temp->acc.password, pass);
 		cout << "thay doi mat khau thanh cong." << endl;
 		ofstream file;
-		file.open("accstudent.csv", ios::out);
+		file.open("../Project/Tai Khoan/accstudent.csv", ios::out);
 		file << "ten tai khoan,mat khau,\n";
 		while (acc!=NULL)
 		{
@@ -275,7 +275,7 @@ Lop* taoLop()
 
 void docFileLop(listLop& l)// DOC FILE LUU DANH SACH LOP HOC DA DUOC TAO TRUOC
 {
-	ifstream file("danh sach lop.csv", ios::in);
+	ifstream file("../Project/Lop/danh sach lop.csv", ios::in);
 	if (file.fail())
 		return;
 	int n = 0;
@@ -289,7 +289,7 @@ void docFileLop(listLop& l)// DOC FILE LUU DANH SACH LOP HOC DA DUOC TAO TRUOC
 	}
 
 	file.close();
-	file.open("danh sach lop.csv", ios::in);
+	file.open("../Project/Lop/danh sach lop.csv", ios::in);
 	getline(file, str);
 	l.namhoc = str.substr(0, str.find(","));
 	n--;
@@ -314,7 +314,7 @@ void docFileLop(listLop& l)// DOC FILE LUU DANH SACH LOP HOC DA DUOC TAO TRUOC
 		temp->nam = stoi(str);
 		temp->danhsach = new thongtinSV[temp->soluong];
 
-		str = temp->tenLop + ".csv";
+		str ="../Project/Lop/"+ temp->tenLop + ".csv";
 
 
 		ifstream f(str, ios::in);
@@ -361,12 +361,12 @@ void ghiDSLop(listLop l)//CAP NHAT THONG TIN MOI VAO FILE DANH SACH LOP
 {
 	Lop* temp = l.head;
 
-	ofstream f("danh sach lop.csv", ios::out);
+	ofstream f("../Project/Lop/danh sach lop.csv", ios::out);
 	f << l.namhoc << ",\n";
 	while (temp != NULL)
 	{
 		f << temp->tenLop << "," << temp->khoa << "," <<temp->top<<"," << temp->soluong << "," << temp->nam << "\n";
-		string str = temp->tenLop + ".csv";
+		string str ="../Project/Lop/"+ temp->tenLop + ".csv";
 		ofstream file(str, ios::out);
 		for (int i = 0; i < temp->top; i++)
 			file << temp->danhsach[i].MSSV << "," << temp->danhsach[i].tensv << "," << temp->danhsach[i].lop << "," << temp->danhsach[i].gtinh << "," << temp->danhsach[i].ngsinh << "," << temp->danhsach[i].CCCD << ",\n";
@@ -503,7 +503,7 @@ void themVaoLopFile(listLop& lop, listSinhVien& l)
 	int n = 0;
 	cout << endl;
 	cout << endl;
-	cout << "nhap ten file CSV vao (vd: 22CTT2.csv : ";
+	cout << "nhap ten file CSV vao (vd: 22CTT2.csv) : ";
 	getline(cin, str);
 	ifstream f(str, ios::in);
 	string ch;
@@ -724,8 +724,8 @@ void ghifile(listSinhVien s)//CAP NHAT THONG TIN MOI VAO FILE THONG TIN VA TAI K
 	SinhVien* sv = s.pHead;
 	ofstream file1;
 	ofstream file2;
-	file1.open("infostudent.csv", ios::out);
-	file2.open("accstudent.csv", ios::out);
+	file1.open("../Project/Thong Tin/infostudent.csv", ios::out);
+	file2.open("../Project/Tai Khoan/accstudent.csv", ios::out);
 	file1 << "MSSV,ho va ten,lop,gioi tinh,ngay sinh,CCCD,\n";
 	file2 << "ten tai khoan,mat khau,\n";
 	while (sv != NULL)
@@ -893,11 +893,14 @@ int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM MOT SINH VIEN VAO MOT MON HOC 
 	cout << "nhap ma hoc phan lop can them vao : ";
 	cin.ignore();
 	getline(cin, str);
+	string str1;
+	cout << "nhap ten lop : ";
+	getline(cin, str1);
 	hp = k.HP;
 	while (hp != NULL)
 	{
-		if (hp->MaHP == str)
-			break;
+		if (hp->MaHP == str and str1==hp->Tenlop)
+			break ;
 		hp = hp->next;
 	}
 	if (hp == NULL)
@@ -914,16 +917,16 @@ int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM MOT SINH VIEN VAO MOT MON HOC 
 	cout << "Si so : " << hp->top << "/" << hp->soluong << endl;
 	cout << endl;
 	ifstream file;
-	do {
 		cout << "vui long nhap ten file (ex: 123.csv): ";
 
 		getline(cin, str);
 		 file.open(str, ios::in);
-		 if(file.fail())
-		cout << "khong tim thay file." << endl;
-		 cout << endl;
-	} while (file.fail());
-	string str1;
+		 if (file.fail()) {
+			 cout << "khong tim thay file." << endl;
+			 return 1;
+		 }
+
+
 	int n = 0;
 	while (!file.eof())
 	{
@@ -1027,15 +1030,19 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 		return 0;
 	string str;
 	int y;
-	cout << "nhap ma hoc phan lop muon xem : ";
+	cout << endl;
+	cout << "nhap ma hoc : ";
 	cin.ignore();
 	getline(cin, str);
+	cout << "nhap lop : ";
+	string str0;
+	getline(cin, str0);
 	if (str == "0")
 		return 1;
 	temp = k.HP;
 	while (temp != NULL)
 	{
-		if (temp->MaHP == str)
+		if (temp->MaHP == str and str0==temp->Tenlop)
 		{
 			do {
 				system("cls");
@@ -1090,7 +1097,7 @@ void xuatMonHhoc(Hocphan *temp)//XUAT THONG TIN LOP HOC
 
 void ghiFileMonHoc(Khoahoc k)//CAP NHAT THONG TIN VAO FILE MON HOC
 {
-	ofstream file("mon hoc.csv");
+	ofstream file("../Project/Mon Hoc/mon hoc.csv");
 	file << k.hocki << "," << k.batdau.ngay << "/" << k.batdau.thang << "/" << k.batdau.nam << "," << k.ketthuc.ngay << "/" << k.ketthuc.thang << "/" << k.ketthuc.nam << ",\n";
 	Hocphan *h = k.HP;
 	while (h != NULL)
@@ -1102,7 +1109,7 @@ void ghiFileMonHoc(Khoahoc k)//CAP NHAT THONG TIN VAO FILE MON HOC
 	h = k.HP;
 	while (h != NULL)
 	{
-		string str = h->MaHP+".csv";
+		string str ="../Project/Mon Hoc/Danh Sach/"+ h->MaHP+"-"+h->Tenlop  + ".csv";
 		ofstream file (str, ios::binary);
 		for (int i = 0; i < h->top; i++)
 			file << h->danhsach[i].info.MSSV << "," << h->danhsach[i].info.tensv << "," << h->danhsach[i].info.lop << "," << h->danhsach[i].info.gtinh << "," << h->danhsach[i].info.ngsinh << "," << h->danhsach[i].info.CCCD << ",\n";
@@ -1112,7 +1119,7 @@ void ghiFileMonHoc(Khoahoc k)//CAP NHAT THONG TIN VAO FILE MON HOC
 	h = k.HP;
 	while (h != NULL)
 	{
-		string str = "Diem-"+h->MaHP + ".csv";
+		string str = "../Project/Mon Hoc/Diem/Diem-"+h->MaHP + "-" + h->Tenlop + ".csv";
 		ofstream file(str, ios::binary);
 		for (int i = 0; i < h->top; i++)
 			file << h->danhsach[i].info.MSSV << "," << h->danhsach[i].info.tensv << "," <<h->danhsach[i].diem.giuaki<<","<<h->danhsach[i].diem.cuoiki<<"," << h->danhsach[i].diem.diemtb << ",\n";
@@ -1123,7 +1130,7 @@ void ghiFileMonHoc(Khoahoc k)//CAP NHAT THONG TIN VAO FILE MON HOC
 
 void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 {
-	ifstream file("mon hoc.csv", ios::in);
+	ifstream file("../Project/Mon Hoc/mon hoc.csv", ios::in);
 	if (file.fail())
 		return;
 	int n = 0;
@@ -1138,7 +1145,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 	}
 
 	file.close();
-	file.open("mon hoc.csv", ios::in);
+	file.open("../Project/Mon Hoc/mon hoc.csv", ios::in);
 	if (n == 1)
 	{
 		getline(file, str);
@@ -1206,7 +1213,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 		
 		h->danhsach = new Thongtin[h->soluong];
 
-		temp = h->MaHP + ".csv";
+		temp = "../Project/Mon Hoc/Danh Sach/"+h->MaHP+"-"+h->Tenlop + ".csv";
 
 
 		ifstream file1(temp, ios::in);
@@ -1247,7 +1254,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 			h->danhsach[j].info.CCCD = stoi(str);
 		}
 		file1.close();
-		temp = "Diem-" + h->MaHP + ".csv";
+		temp = "../Project/Mon Hoc/Diem/Diem-" + h->MaHP +"-"+h->Tenlop + ".csv";
 		file1.open(temp, ios::in);
 		if (file1.fail())
 			return;
@@ -1292,13 +1299,17 @@ int suaMonHoc(Khoahoc k,listLop lop)//SUA THONG TIN MON HOC
 		return 0;
 	string str;
 	cin.ignore();
+	cout << endl;
 	cout << "nhap ma hoc phan : ";
+	
 	getline(cin,str);
-	cout << str;
+	string str1;
+	cout << "nhap ten lop : ";
+	getline(cin, str1);
 	temp = k.HP;
 	while (temp != NULL)
 	{
-		if (str.compare(temp->MaHP) == 0)
+		if (str.compare(temp->MaHP) == 0 and str1.compare(temp->Tenlop)==0)
 		{
 			break;
 		}
@@ -1418,9 +1429,12 @@ int themSVMonHoc(Khoahoc& k, listSinhVien l,listLop lop)//THEM SINH VIEN VAO 1 M
 	string str;
 	cin.ignore();
 	getline(cin, str);
+	string str1;
+	cout << "nhap ten lop : ";
+	getline(cin, str1);
 	while (temp != NULL)
 	{
-		if (temp->MaHP == str)
+		if (temp->MaHP == str and temp->Tenlop==str1)
 			break;
 		
 		temp = temp->next;
@@ -1499,10 +1513,13 @@ int xoa1SVRaKhoiMonHoc(Khoahoc k, listLop  lop)//XOA 1 SINH VIEN RA KHOI 1 MON H
 	string str;
 	cin.ignore();
 	getline(cin, str);
+	string str1;
+	cout << "nhap ten lop : ";
+	getline(cin, str1);
 	temp = k.HP;
 	while (temp != NULL)
 	{
-		if (temp->MaHP == str)
+		if (temp->MaHP == str and temp->Tenlop ==str1)
 			break;
 
 		temp = temp->next;
@@ -1560,10 +1577,13 @@ void xoaKhoaHoc(Khoahoc& k)//XOA DI MOT MON HOC
 	cout << "nhap ma hoc phan lop can xoa ";
 	cin.ignore();
 	getline(cin, str);
+	string str1;
+	cout << "nhap ten lop : ";
+	getline(cin, str1);
 	hp = k.HP;
 	while (hp != NULL)
 	{
-		if (hp->MaHP == str)
+		if (hp->MaHP == str and hp->Tenlop==str1)
 			break;
 		hp = hp->next;
 	}
@@ -1640,7 +1660,7 @@ void svxemDiem(Khoahoc k, SinhVien* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON
 		for (int i = 0; i < temp->top; i++)
 			if (sv->info.MSSV == temp->danhsach[i].info.MSSV)
 			{
-				cout <<setw(15) << left << temp->MaHP << setw(30) << left << temp->TenHP << setw(15) << left << temp->hki << setw(0) << left << temp->nam<<" - "<<  setw(10) << left<<temp->nam<< setw(15) << left << temp->danhsach[i].diem.giuaki << setw(15) << left << temp->danhsach[i].diem.cuoiki << setw(15) << left << temp->danhsach[i].diem.diemtb << endl;
+				cout <<setw(15) << left << temp->MaHP << setw(30) << left << temp->TenHP << setw(15) << left << temp->hki << setw(0) << left << temp->nam<<" - "<<  setw(13) << left<<temp->nam+1<< setw(15) << left << temp->danhsach[i].diem.giuaki << setw(15) << left << temp->danhsach[i].diem.cuoiki << setw(15) << left << temp->danhsach[i].diem.diemtb << endl;
 				sum += temp->danhsach[i].diem.diemtb;
 				heso += temp->tinchi;
 				break;

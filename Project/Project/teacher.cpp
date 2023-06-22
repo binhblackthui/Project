@@ -20,7 +20,7 @@ void taoDSGV(listGiaoVien& l)//dem so luong sinh vien trong file csv
 	char temp[10000];
 	ifstream file;
 	int n = 0;
-	file.open("accteacher.csv", ios::in);
+	file.open("../Project/Tai Khoan/accteacher.csv", ios::in);
 	if (file.fail() == true)
 		cout << "mo file khon thanh cong";
 	file.getline(temp, 1000);
@@ -48,8 +48,8 @@ void docfileGV(listGiaoVien& l)
 	GiaoVien* t = l.Head;
 	ifstream file1;
 	ifstream file2;
-	file1.open("accteacher.csv", ios::in);
-	file2.open("infoteacher.csv", ios::in);
+	file1.open("../Project/Tai Khoan/accteacher.csv", ios::in);
+	file2.open("../Project/Thong Tin/infoteacher.csv", ios::in);
 	file1.getline(temp1, 1000);
 	file2.getline(temp1, 1000);
 	while (t!=NULL)
@@ -206,7 +206,7 @@ GiaoVien* doiMatKhauGV(GiaoVien*& temp,listGiaoVien l)
 	strcpy(temp->acc.pass, pass);
 	cout << "Doi mat khau thanh cong" << endl;
 	ofstream file;
-	file.open("accteacher.csv", ios::out);
+	file.open("../Project/Tai Khoan/accteacher.csv", ios::out);
 	file << "ten tai khoan,mat khau,\n";
 	GiaoVien* t = l.Head;
 	while (t!=NULL)

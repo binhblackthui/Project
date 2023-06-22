@@ -21,7 +21,6 @@ int main()
 	docfileGV(t);
 	docFileMonHoc(k);
 	docFileLop(lop);
-	cout << t.Head->acc.pass;
 	do
 	{
 	menu:
@@ -177,7 +176,7 @@ int main()
 					goto menu;
 				if (x == 1)
 				{
-					
+
 				dangnhaplaiGV:
 					system("cls");
 					cin.ignore();
@@ -277,9 +276,9 @@ int main()
 									case 2:
 									{
 										system("cls");
-										
+
 										taoLopHoc(lop);
-									
+
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;
@@ -393,7 +392,7 @@ int main()
 												cout << "hoc ki da duoc tao." << endl;
 											}
 										}
-										
+
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;
@@ -506,7 +505,7 @@ int main()
 							{
 								goto menuGV;
 							}
-						
+
 						} while (1);
 					}
 
