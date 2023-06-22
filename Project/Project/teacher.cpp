@@ -1,10 +1,7 @@
 #include"teacher.h"
 
 
-void ganNULLGV(listGiaoVien& l)
-{
-	l.Head = NULL;
-}
+
 
 
 GiaoVien* taoGV()

@@ -11,12 +11,10 @@ int main()
 	SinhVien* temp;
 	GiaoVien* temp1;
 	listLop lop;
-	GanNULLSV(s);
 	demsoluongsv(s);
 	docfileSV(s);
 	int n;
 	int x;
-	ganNULLGV(t);
 	taoDSGV(t);
 	docfileGV(t);
 	docFileMonHoc(k);

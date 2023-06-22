@@ -43,7 +43,7 @@ struct listLop {
 };
 struct listSinhVien 
 {
-	SinhVien* pHead;
+	SinhVien* pHead=NULL;
 };
 
 struct Ngay
@@ -101,7 +101,6 @@ struct Khoahoc
 void docfileSV(listSinhVien& l);//dua danh sach sinh da duoc dang ki ra mang
 void demsoluongsv(listSinhVien& l);//dem so luong sinh vien da đănn kí
 SinhVien* taoSV();
-void GanNULLSV(listSinhVien& l);
 void themDauDSSV(listSinhVien& l);
 void xuatthongtinSV(SinhVien* s);
 SinhVien* dangnhapSV(listSinhVien& l);

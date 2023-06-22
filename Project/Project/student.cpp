@@ -195,10 +195,7 @@ SinhVien* taoSV()//TAO RA MOT TAI KHOA SINH VIEN
 
 
 
-void GanNULLSV(listSinhVien& l)//GAN DAU DANH SACH LIEN KET BANG NULL
-{
-	l.pHead = NULL;
-}
+
 
 
 
@@ -890,9 +887,10 @@ int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM MOT SINH VIEN VAO MOT MON HOC 
 
 	
 
-	cout << "nhap ma hoc phan lop can them vao : ";
+	cout << "nhap ma hoc phan (0. Thoat) : ";
 	cin.ignore();
 	getline(cin, str);
+	if (str == "0") return 1;
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);
@@ -1003,12 +1001,14 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 	}
 	if (i == 1)
 		return 0;
+	cout << endl;
 	cout << "nhap nam can xem khoa hoc : "; cin >> i;
 	system("cls");
 	cout << "1. hoc ki 1" << endl;
 	cout << "2. hoc ki 2" << endl;
 	cout << "3. hoc ki 3" << endl;
 	int x;
+	cout << endl;
 	cout << "nhap hoc ki : " << endl;
 	do {
 		cin >> x;
@@ -1031,9 +1031,11 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 	string str;
 	int y;
 	cout << endl;
-	cout << "nhap ma hoc : ";
+	cout << "nhap ma hoc (0. Thoat) : ";
+	
 	cin.ignore();
 	getline(cin, str);
+	if (str == "0") return 1;
 	cout << "nhap lop : ";
 	string str0;
 	getline(cin, str0);
@@ -1066,7 +1068,10 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 					xuatMonHhoc(temp);
 				else
 					xuatDSDiem(temp);
+				cout << endl;
 				cout << "0. quay lai" << endl;
+				cout << endl; 
+				cout << " nhap su lua chon : ";
 				do {
 					cin >> y;
 				} while (y != 0);
@@ -1300,9 +1305,11 @@ int suaMonHoc(Khoahoc k,listLop lop)//SUA THONG TIN MON HOC
 	string str;
 	cin.ignore();
 	cout << endl;
-	cout << "nhap ma hoc phan : ";
+	cout << "nhap ma hoc phan (0. Thoat) : ";
 	
 	getline(cin,str);
+	if (str == "0")
+		return 1;
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);
@@ -1425,10 +1432,11 @@ int themSVMonHoc(Khoahoc& k, listSinhVien l,listLop lop)//THEM SINH VIEN VAO 1 M
 	if (j == 1)
 		return 0;
 	cout << endl;
-	cout << "Nhap Ma Hoc : ";
+	cout << "Nhap Ma Hoc (0. Thoat) : ";
 	string str;
 	cin.ignore();
 	getline(cin, str);
+	if (str == "0") return 1;
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);
@@ -1509,10 +1517,11 @@ int xoa1SVRaKhoiMonHoc(Khoahoc k, listLop  lop)//XOA 1 SINH VIEN RA KHOI 1 MON H
 		return 0;
 	cout << endl;
 
-	cout << "Nhap Ma Hoc : ";
+	cout << "Nhap Ma Hoc (0. Thoat) : ";
 	string str;
 	cin.ignore();
 	getline(cin, str);
+	if (str == "0") return 1;
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);
@@ -1574,9 +1583,10 @@ void xoaKhoaHoc(Khoahoc& k)//XOA DI MOT MON HOC
 	if (j == 1)
 		return ;
 	cout << endl;
-	cout << "nhap ma hoc phan lop can xoa ";
+	cout << "nhap ma hoc phan (0. Thoat): ";
 	cin.ignore();
 	getline(cin, str);
+	if (str == "0") return ;
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);

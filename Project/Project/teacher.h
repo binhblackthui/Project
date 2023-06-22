@@ -27,7 +27,7 @@ struct GiaoVien
 };
 struct listGiaoVien
 {
-	GiaoVien* Head;
+	GiaoVien* Head=NULL;
 };
 
 
@@ -37,6 +37,5 @@ void docfileGV(listGiaoVien& l);
 void themDauDSGV(listGiaoVien& l);
 void taoDSGV(listGiaoVien& l);
 GiaoVien* taoGV();
-void ganNULLGV(listGiaoVien& l);
 void xuatThongTinGV(GiaoVien* t);
 GiaoVien* doiMatKhauGV(GiaoVien*& temp, listGiaoVien l);
