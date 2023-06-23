@@ -841,7 +841,7 @@ void taoMonHoc(Khoahoc& k, listLop lop)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 	cout << "tiet bat dau (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : ";
 	getline(cin, mon->time.gioBatDau);
 	inHoa(mon->time.gioBatDau);
-	cout << "tiet ket thuc (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : ";
+	cout << "tiet ket thuc (S4(9:00), S5(11:00), S6(15:00), S7(17:00) : ";
 	getline(cin, mon->time.gioKetThuc);
 	inHoa(mon->time.gioKetThuc);
 	mon->danhsach = new Thongtin[mon->soluong];
@@ -865,7 +865,7 @@ void taoMonHoc(Khoahoc& k, listLop lop)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 }
 
 
-int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM MOT SINH VIEN VAO MOT MON HOC DA DUOC TAO TRUOC
+int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM  SINH VIEN VAO MOT MON HOC DA DUOC TAO TRUOC BANG FILE CSV
 {
 	Hocphan* hp = k.HP;
 	Hocphan* temp1 = k.HP;
@@ -1576,7 +1576,7 @@ void xoaKhoaHoc(Khoahoc& k)//XOA DI MOT MON HOC
 	int j = 1;
 	while (temp1 != NULL)
 	{
-			cout << setw(10) << left << j << setw(15) << left << temp1->MaHP << setw(25) << left << temp1->TenHP << setw(15) << left << temp1->Tenlop << setw(25) << left << temp1->GV << setw(20) << left << temp1->tinchi << setw(10) << left << temp1->time.thu << setw(20) << left << temp1->time.gioBatDau << setw(20) << left << temp1->time.gioKetThuc << setw(0) << left << temp1->top << setw(0) << left << "/" << temp1->soluong << endl;
+		cout << setw(10) << left << j << setw(15) << left << temp1->MaHP << setw(25) << left << temp1->TenHP << setw(15) << left << temp1->Tenlop << setw(25) << left << temp1->GV << setw(20) << left << temp1->tinchi << setw(10) << left << temp1->time.thu << setw(20) << left << temp1->time.gioBatDau << setw(20) << left << temp1->time.gioKetThuc << setw(0) << left << temp1->top << setw(0) << left << "/" << setw(18) << left << temp1->soluong << setw(20) << left << temp1->hki << temp1->nam << " - " << temp1->nam + 1 << endl;
 			j++;
 		temp1 = temp1->next;
 	}
@@ -1602,9 +1602,9 @@ void xoaKhoaHoc(Khoahoc& k)//XOA DI MOT MON HOC
 		cout << "khong thay ma hoc phan." << endl;
 		return;
 	}
-	str = hp->MaHP+ ".csv";
+	str = "../Project/Mon Hoc/Danh Sach/"+hp->MaHP +"-" + hp->Tenlop + ".csv";
 	remove(str.c_str());
-	str = "Diem-" + hp->MaHP + ".csv";
+	str = "../Project/Mon Hoc/Diem/Diem-" + hp->MaHP +"-"+hp->Tenlop + ".csv";
 	remove(str.c_str());
 	if (k.HP == hp)
 	{
@@ -1630,7 +1630,7 @@ void xuatDSDiem(Hocphan *temp)//XUAT DANH SACH DIEM CUA SINH VIEN TRONG 1 MON HO
 {
 	system("cls");
 	cout << "Ma hoc phan : " << temp->MaHP << endl;
-	cout << "Ten hoc pha : " << temp->TenHP << endl;
+	cout << "Ten hoc phan : " << temp->TenHP << endl;
 	cout << "Lop : " << temp->Tenlop << endl;
 	cout << "Giao vien : " << temp->GV << endl;
 	cout << "So tinh chi : " << temp->tinchi << endl;
