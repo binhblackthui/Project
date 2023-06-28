@@ -797,7 +797,6 @@ void taoHocKi(Khoahoc& k)// TAO MOT HOC KI MOI
 	cout << "Ngay ket thuc : ";
 	getline(cin, temp);
 	k.ketthuc = taoNgay(temp);
-	k.HP = NULL;
 	ghiFileMonHoc(k);
 }
 
@@ -838,25 +837,19 @@ void taoMonHoc(Khoahoc& k, listLop lop)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 	cin.ignore();
 	getline(cin, mon->time.thu);
 	inHoa(mon->time.thu);
-	cout << "tiet bat dau (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : ";
+	cout << "tiet bat dau (S1(7:30), S3(9:30), S5(13:30), S7(15:30) : ";
 	getline(cin, mon->time.gioBatDau);
 	inHoa(mon->time.gioBatDau);
-	cout << "tiet ket thuc (S4(9:00), S5(11:00), S6(15:00), S7(17:00) : ";
+	cout << "tiet ket thuc (S2(9:00), S4(11:00), S6(15:00), S8(17:00) : ";
 	getline(cin, mon->time.gioKetThuc);
 	inHoa(mon->time.gioKetThuc);
 	mon->danhsach = new Thongtin[mon->soluong];
 	mon->top = 0;
 	mon->hki = k.hocki;
 	mon->nam = stoi(lop.namhoc);
-	if (k.HP == NULL)
-	{
-		k.HP = mon;
-	}
-	else
-	{
+	
 		mon->next = k.HP;
 		k.HP = mon;
-	}
 
 
 	
@@ -989,7 +982,7 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 		{
 			if (temp1 == temp)
 			{
-				cout << i << ". " << temp->nam << endl;
+				cout << i << ". " << temp->nam <<" - "<<temp->nam+1 << endl;
 				i++;
 				break;
 			}
@@ -1014,14 +1007,14 @@ int xuatKhoaHoc(Khoahoc k)//XUAT TAT CA CAC MON HOC RA MOT DANH SACH VA XEM THON
 		cin >> x;
 	} while (x < 1 || x>3);
 	system("cls");
-	cout << setw(10) << left << "stt" << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << setw(20) << left << "si so" << setw(20) << left << "hoc ki" << setw(20) << left << "nam hoc" << endl;
+	cout << setw(10) << left << "stt" << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << setw(20) << left << "si so"  << endl;
 	int j = 1;
 	temp = k.HP;
 	while (temp != NULL)
 	{
 		if (temp->nam == i and temp->hki == x)
 		{
-			cout << setw(10) << left << j << setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << setw(0) << left << temp->top << setw(0) << left << "/" << setw(18) << left<< temp->soluong << setw(20) << left<<temp->hki<<temp->nam<<" - "<<temp->nam+1 << endl;
+			cout << setw(10) << left << j << setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << setw(0) << left << temp->top << setw(0) << left << "/" << setw(18) << left<< temp->soluong <<  endl;
 			j++;
 		}
 		temp = temp->next;
@@ -1272,7 +1265,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 			str = str.substr(str.find(",") + 1, str.length());
 			h->danhsach[j].diem.cuoiki = stoi(str);
 			str = str.substr(str.find(",") + 1, str.length());
-			h->danhsach[j].diem.diemtb = stoi(str);
+			h->danhsach[j].diem.diemtb = 0.4 * h->danhsach[j].diem.giuaki + 0.6 * h->danhsach[j].diem.cuoiki;
 		}
 		if (k.HP == NULL)
 			k.HP = h;
@@ -1282,6 +1275,7 @@ void docFileMonHoc(Khoahoc& k)//DOC FILE MON HOC DE BIET MON HOC NAO DA DUOC TAO
 			k.HP = h;
 		}
 	}
+	ghiFileMonHoc(k);
 	file.close();
 }
 
@@ -1646,13 +1640,13 @@ void xuatDSDiem(Hocphan *temp)//XUAT DANH SACH DIEM CUA SINH VIEN TRONG 1 MON HO
 void svxemThongTinLop(Khoahoc k, SinhVien* sv)//XEM THONG TIN CUA 1 SINH VIEN DUOC DANG KI TRONG CAC MON HOC
 {
 	Hocphan* temp = k.HP;
-	cout << setw(10) << left << "stt" << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << setw(20) << left << "si so" << setw(20) << left << "hoc ki" << setw(20) << left << "nam hoc" << endl;
+	cout << setw(15) << left << "Ma hoc phan" << setw(25) << left << "Ten hoc phan" << setw(15) << left << "Ten Lop" << setw(25) << left << "Ten giao vien" << setw(20) << left << "so tin chi" << setw(10) << left << "buoi" << setw(20) << left << "tiet bat dau" << setw(20) << left << "tiet ket thuc" << setw(20) << left << "si so" << setw(20) << left << "hoc ki" << setw(20) << left << "nam hoc" << endl;
 	while (temp != NULL)
 	{
 		for (int i = 0; i < temp->top; i++)
 			if (sv->info.MSSV == temp->danhsach[i].info.MSSV)
 			{
-				cout << setw(10) << left << i << setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << setw(0) << left << temp->top << setw(0) << left << "/" << setw(18) << left << temp->soluong << setw(20) << left << temp->hki << temp->nam << " - " << temp->nam + 1 << endl;
+				cout <<setw(15) << left << temp->MaHP << setw(25) << left << temp->TenHP << setw(15) << left << temp->Tenlop << setw(25) << left << temp->GV << setw(20) << left << temp->tinchi << setw(10) << left << temp->time.thu << setw(20) << left << temp->time.gioBatDau << setw(20) << left << temp->time.gioKetThuc << setw(0) << left << temp->top << setw(0) << left << "/" << setw(18) << left << temp->soluong << setw(20) << left << temp->hki << temp->nam << " - " << temp->nam + 1 << endl;
 				 break;
 			}
 		temp = temp->next;
