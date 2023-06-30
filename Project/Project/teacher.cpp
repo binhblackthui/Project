@@ -137,12 +137,24 @@ void docfileGV(listGiaoVien& l)
 		{
 			temp2[j] = temp1[k];
 			k++;
-			if (temp1[k] == '\0')
+			if (temp1[k] == ',')
 			{
 				k++;
 				temp2[j + 1] = '\0';
 				t->info.chucvu = new char[strlen(temp2) + 1];
 				strcpy(t->info.chucvu, temp2);
+				break;
+			}
+		}
+		for (int j = 0; 1; j++)
+		{
+			temp2[j] = temp1[k];
+			k++;
+			if (temp1[k] == '\0')
+			{
+				k++;
+				temp2[j + 1] = '\0';
+				t->info.CCCD = stoi(temp2);
 				break;
 			}
 		}
@@ -182,6 +194,7 @@ void xuatThongTinGV(GiaoVien* t)
 	cout << "Gioi tinh : " << t->info.gtinh<<endl;
 	cout << "Ngay sinh : " << t->info.ngsinh << endl;
 	cout << "Chuc vu : " << t->info.chucvu << endl;
+	cout << "can cuoc cong dan : " << t->info.CCCD << endl;
 }
 
 

@@ -681,29 +681,8 @@ void them1SVLop(listLop& l, listSinhVien& s)
 	cin >> svnew->info.CCCD;
 
 
-	if (s.pHead->info.MSSV > svnew->info.MSSV)
-	{
-		svnew->pNext = s.pHead;
-		s.pHead = svnew;
-	}
-	else {
-		SinhVien* sv = s.pHead;
-		while (sv != NULL)
-		{
-			if (sv->pNext == NULL)
-			{
-				sv->pNext = svnew;
-				break;
-			}
-			if (sv->info.MSSV<svnew->info.MSSV and sv->pNext->info.MSSV>svnew->info.MSSV)
-			{
-				svnew->pNext = sv->pNext;
-				sv->pNext = svnew;
-				break;
-			}
-			sv = sv->pNext;
-		}
-	}
+	svnew->pNext = s.pHead;
+	s.pHead = svnew;
 	temp->danhsach[temp->top] = svnew->info;
 	temp->top++;
 	cout << "them sinh vien thanh cong" << endl;
@@ -1359,7 +1338,12 @@ void suaMon(Hocphan*& temp)
 		}
 		case 2:
 		{
+			string str = "../Project/Mon Hoc/Danh Sach/" + temp->MaHP + "-" + temp->Tenlop + ".csv";
+			remove(str.c_str());
+			str = "../Project/Mon Hoc/Danh Sach/Diem-" + temp->MaHP + "-" + temp->Tenlop + ".csv";
+			remove(str.c_str());
 			cout << "Ten lop : ";
+			
 			getline(cin, temp->Tenlop);
 			inHoa(temp->Tenlop);
 			break;
@@ -1434,6 +1418,7 @@ int themSVMonHoc(Khoahoc& k, listSinhVien l,listLop lop)//THEM SINH VIEN VAO 1 M
 	string str1;
 	cout << "nhap ten lop : ";
 	getline(cin, str1);
+	temp = k.HP;
 	while (temp != NULL)
 	{
 		if (temp->MaHP == str and temp->Tenlop==str1)
@@ -1487,7 +1472,7 @@ int themSVMonHoc(Khoahoc& k, listSinhVien l,listLop lop)//THEM SINH VIEN VAO 1 M
 	temp->danhsach[temp->top].info = sv->info;
 	temp->top++;
 	cout << "them sinh vien vao thanh cong" << endl;
-	docFileMonHoc(k);
+	ghiFileMonHoc(k);
 	return 1;
 }
 
@@ -1655,7 +1640,7 @@ void svxemThongTinLop(Khoahoc k, SinhVien* sv)//XEM THONG TIN CUA 1 SINH VIEN DU
 
 void svxemDiem(Khoahoc k, SinhVien* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON HOC
 {
-	int sum = 0;
+	float sum = 0;
 	int heso = 0;
 	Hocphan* temp = k.HP;
 	cout<< setw(15) << left << "Ma hoc phan" << setw(30) << left << "Ten hoc phan" << setw(15) << left<<"hoc ki"<<setw(20) << left<<"nam hoc"<< setw(15) << left << "diem giua ki" << setw(15) << left << "cuoi ki" << setw(15) << left << "diem trung binh" << endl;
@@ -1665,7 +1650,7 @@ void svxemDiem(Khoahoc k, SinhVien* sv)// XEM DIEM CUA 1 SINH VIEN TRONG CAC MON
 			if (sv->info.MSSV == temp->danhsach[i].info.MSSV)
 			{
 				cout <<setw(15) << left << temp->MaHP << setw(30) << left << temp->TenHP << setw(15) << left << temp->hki << setw(0) << left << temp->nam<<" - "<<  setw(13) << left<<temp->nam+1<< setw(15) << left << temp->danhsach[i].diem.giuaki << setw(15) << left << temp->danhsach[i].diem.cuoiki << setw(15) << left << temp->danhsach[i].diem.diemtb << endl;
-				sum += temp->danhsach[i].diem.diemtb;
+				sum += temp->danhsach[i].diem.diemtb*temp->tinchi;
 				heso += temp->tinchi;
 				break;
 			}

@@ -13,6 +13,7 @@ struct thongtinGV
 	char* chucvu;
 	char* mail;
 	char* gtinh;
+	long long CCCD;
 };
 struct taikhoanGV
 {
