@@ -578,13 +578,7 @@ void themVaoLopFile(listLop& lop, listSinhVien& l)
 
 	}
 	temp->top += n;
-	/*sv = s.pHead;
-	while (sv != NULL)
-	{
-		cout << sv->acc.tenTK;
-		sv = sv->pNext;
-	}
-	cin >> str;*/
+	
 	sv = l.pHead;
 	
 	
@@ -816,10 +810,10 @@ void taoMonHoc(Khoahoc& k, listLop lop)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 	cin.ignore();
 	getline(cin, mon->time.thu);
 	inHoa(mon->time.thu);
-	cout << "tiet bat dau (S1(7:30), S3(9:30), S5(13:30), S7(15:30) : ";
+	cout << "tiet bat dau (S1(7:30), S2(9:30), s3(13:30), S4(15:30)) : ";
 	getline(cin, mon->time.gioBatDau);
 	inHoa(mon->time.gioBatDau);
-	cout << "tiet ket thuc (S2(9:00), S4(11:00), S6(15:00), S8(17:00) : ";
+	cout << "tiet ket thuc (S1(7:30), S2(9:30), s3(13:30), S4(15:30)) : ";
 	getline(cin, mon->time.gioKetThuc);
 	inHoa(mon->time.gioKetThuc);
 	mon->danhsach = new Thongtin[mon->soluong];
@@ -837,7 +831,7 @@ void taoMonHoc(Khoahoc& k, listLop lop)//TAO MOT MON HOC DUOC NHAP THONG TIN VAO
 }
 
 
-int themSVVaoMonHoc(Khoahoc k, listLop lop)//THEM  SINH VIEN VAO MOT MON HOC DA DUOC TAO TRUOC BANG FILE CSV
+int themSVVaoMonHocFile(Khoahoc k, listLop lop)//THEM  SINH VIEN VAO MOT MON HOC DA DUOC TAO TRUOC BANG FILE CSV
 {
 	Hocphan* hp = k.HP;
 	Hocphan* temp1 = k.HP;
@@ -1317,8 +1311,8 @@ void suaMon(Hocphan*& temp)
 		cout << "4. So tin chi : " << temp->tinchi << endl;
 		cout << "5. So luong sinh vien toi da (MAX = 50) : " << temp->soluong << endl;
 		cout << "6. Buoi hoc (MON/TUE/WED/THU/FRI/SAT) : " << temp->time.thu << endl;
-		cout << "7. Tiet bat dau (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : " << temp->time.gioBatDau << endl;
-		cout << "8. Tiet ket thuc (S1(7:30), S2(9:30), S3(13:30), S4(15:30) : " << temp->time.gioKetThuc << endl;
+		cout << "7. Tiet bat dau (S1(7:30), S2(9:30), S3(13:30), S4(15:30)) : " << temp->time.gioBatDau << endl;
+		cout << "8. Tiet ket thuc (S1(7:30), S2(9:30), S3(13:30), S4(15:30)) : " << temp->time.gioKetThuc << endl;
 		cout << "0.quay lai" << endl;
 		int x;
 		cout << "Phan ban muon sua lai : ";

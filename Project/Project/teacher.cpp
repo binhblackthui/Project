@@ -4,7 +4,7 @@
 
 
 
-GiaoVien* taoGV()
+GiaoVien* taoGV()//tao mot tai khoan giao vien
 {
 	GiaoVien* temp = new GiaoVien;
 	temp->Next = NULL;
@@ -29,7 +29,7 @@ void taoDSGV(listGiaoVien& l)//dem so luong sinh vien trong file csv
 }
 
 
-void themDauDSGV(listGiaoVien& l)
+void themDauDSGV(listGiaoVien& l)//them tai khoan moi vao dau danh sach nhan vien
 {
 
 	GiaoVien* t = taoGV();
@@ -38,10 +38,10 @@ void themDauDSGV(listGiaoVien& l)
 }
 
 
-void docfileGV(listGiaoVien& l)
+void docfileGV(listGiaoVien& l)//doc file tai khoan va thong tin cua nhan vien vao tai khoan rong
 {
-	char temp1[1000];//chep chuoi ra tu file
-	char temp2[100];//chep chuoi ra tu temp1
+	char temp1[1000];
+	char temp2[100];
 	GiaoVien* t = l.Head;
 	ifstream file1;
 	ifstream file2;
@@ -165,7 +165,7 @@ void docfileGV(listGiaoVien& l)
 }
 
 
-GiaoVien* dangnhapGV(listGiaoVien& l)
+GiaoVien* dangnhapGV(listGiaoVien& l)//dang nhao tai khoan nhan vien
 {
 	GiaoVien* temp = l.Head;
 	char name[100];
@@ -187,7 +187,7 @@ quaylai:
 }
 
 
-void xuatThongTinGV(GiaoVien* t)
+void xuatThongTinGV(GiaoVien* t)//xem thong tin ca nhan cua nhan vien
 {
 	cout << "Ho va ten : " << t->info.tenGV << endl;;
 	cout << "Email : " << t->info.mail << endl;
@@ -198,7 +198,7 @@ void xuatThongTinGV(GiaoVien* t)
 }
 
 
-GiaoVien* doiMatKhauGV(GiaoVien*& temp,listGiaoVien l)
+GiaoVien* doiMatKhauGV(GiaoVien*& temp,listGiaoVien l)//doi mat khau tai nhan vien
 {
 	char pass[1000];
 	cin.ignore();

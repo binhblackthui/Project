@@ -108,7 +108,7 @@ SinhVien* doiMKSV(SinhVien*& temp, listSinhVien l);
 void ghifile(listSinhVien s);
 Ngay taoNgay(string str);
 void taoHocKi(Khoahoc& k);
-int themSVVaoMonHoc(Khoahoc k, listLop  lop);
+int themSVVaoMonHocFile(Khoahoc k, listLop  lop);
 void ghiFileMonHoc(Khoahoc k);
 void taoMonHoc(Khoahoc& k, listLop lop);
 int xuatKhoaHoc(Khoahoc k);

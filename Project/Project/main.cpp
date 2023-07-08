@@ -459,7 +459,7 @@ int main()
 									case 6:
 									{
 										system("cls");
-										themSVVaoMonHoc(k, lop);
+										themSVVaoMonHocFile(k, lop);
 										cout << endl;
 										cout << "0. quay lai" << endl;
 										cout << endl;

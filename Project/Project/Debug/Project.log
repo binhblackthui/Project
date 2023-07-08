@@ -1,9 +1,3 @@
-﻿  student.cpp
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(154,1): warning C4102: 'quaylai': unreferenced label
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(726,11): warning C4018: '<': signed/unsigned mismatch
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(792,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(793,20): warning C4244: '=': conversion from 'wint_t' to 'char', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1243,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1245,37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\student.cpp(1247,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  teacher.cpp
+C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Project\teacher.cpp(173,1): warning C4102: 'quaylai': unreferenced label
   Project.vcxproj -> C:\Users\LENOVO\OneDrive - VNU-HCMUS\Project\Project\Debug\Project.exe
